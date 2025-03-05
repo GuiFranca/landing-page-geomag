@@ -22,9 +22,9 @@ export default function Home() {
           playsInline
           className="absolute w-full h-full object-cover"
         >
-          <source src="/hero-video.mp4" type="video/mp4" />
+          <source src="/assets/videos/hero-background.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
         <motion.div 
           className="relative z-10 text-center text-white max-w-4xl px-4 sm:px-6 lg:px-8"
           initial={{ opacity: 0, y: 20 }}
@@ -56,7 +56,7 @@ export default function Home() {
       </header>
       
       {/* Serviços */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 via-white to-blue-50">
         <div className="container mx-auto">
           <motion.div 
             className="text-center mb-16"
@@ -65,8 +65,10 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Nossos Serviços</h2>
-            <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-blue-800">
+              Nossos Serviços
+            </h2>
+            <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -75,37 +77,49 @@ export default function Home() {
                 icon: FaLeaf,
                 title: "Licenciamento Ambiental",
                 description: "Licenciamentos ambientais em empreendimentos e atividades variadas",
-                color: "green"
+                color: "green",
+                gradient: "from-green-500 to-emerald-600",
+                bgHover: "hover:bg-green-50"
               },
               {
                 icon: FaWater,
                 title: "Outorga",
                 description: "Licença de perfuração e captação, travessia, canalização, barragens e tanques",
-                color: "blue"
+                color: "blue",
+                gradient: "from-blue-500 to-cyan-600",
+                bgHover: "hover:bg-blue-50"
               },
               {
                 icon: FaMapMarkedAlt,
                 title: "Georreferenciamento de Imóveis Rurais",
                 description: "Tecnologia de acordo com a legislação nacional",
-                color: "yellow"
+                color: "yellow",
+                gradient: "from-amber-500 to-yellow-600",
+                bgHover: "hover:bg-amber-50"
               },
               {
                 icon: MdOutlineEngineering,
                 title: "Topografia",
                 description: "Levantamento planialtimétrico, batimetria, obras, retificação e desmembramento",
-                color: "red"
+                color: "red",
+                gradient: "from-red-500 to-rose-600",
+                bgHover: "hover:bg-red-50"
               },
               {
                 icon: FaMap,
                 title: "Geoprocessamento",
                 description: "Redes de drenagem, uso e ocupação do solo, declividade e orientação de relevo",
-                color: "purple"
+                color: "purple",
+                gradient: "from-purple-500 to-violet-600",
+                bgHover: "hover:bg-purple-50"
               },
               {
                 icon: FaFileAlt,
                 title: "CAR - Cadastro Ambiental Rural",
                 description: "Registro, documentação e informações de propriedades rurais",
-                color: "emerald"
+                color: "emerald",
+                gradient: "from-emerald-500 to-teal-600",
+                bgHover: "hover:bg-emerald-50"
               }
             ].map((service, index) => (
               <motion.div
@@ -115,12 +129,14 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="h-full transform hover:scale-105 transition-all duration-300 hover:shadow-xl">
+                <Card className={`h-full transform hover:scale-105 transition-all duration-300 hover:shadow-xl bg-white ${service.bgHover} border border-gray-100`}>
                   <CardContent className="p-8 text-center h-full flex flex-col justify-between">
                     <div>
-                      <service.icon className={`text-${service.color}-600 text-5xl mx-auto mb-6`} />
-                      <h3 className="text-xl font-bold mb-4">{service.title}</h3>
-                      <p className="text-gray-600">{service.description}</p>
+                      <div className={`w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center bg-gradient-to-br ${service.gradient} text-white shadow-lg`}>
+                        <service.icon className="text-3xl" />
+                      </div>
+                      <h3 className="text-xl font-bold mb-4 text-gray-800">{service.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{service.description}</p>
                     </div>
                   </CardContent>
                 </Card>
