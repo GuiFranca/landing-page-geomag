@@ -5,12 +5,17 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
-import { FaMapMarkedAlt, FaLeaf, FaWater, FaTree, FaMap, FaFileAlt, FaPhoneAlt, FaEnvelope, FaWhatsapp } from "react-icons/fa"
-import { MdOutlineEngineering } from "react-icons/md"
+import { FaMapMarkedAlt, FaLeaf, FaWater, FaTree, FaMap, FaFileAlt, FaPhoneAlt, FaEnvelope, FaWhatsapp, FaGlobeAmericas, FaMapMarked } from "react-icons/fa"
+import { MdOutlineEngineering, MdNaturePeople } from "react-icons/md"
 import { motion } from "framer-motion"
 import Image from "next/image"
 
 export default function Home() {
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contato')
+    contactSection?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <div className="min-h-screen bg-white text-gray-900">
       {/* Hero Section com Vídeo */}
@@ -24,7 +29,7 @@ export default function Home() {
         >
           <source src="/assets/videos/hero-background.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70" />
         <motion.div 
           className="relative z-10 text-center text-white max-w-4xl px-4 sm:px-6 lg:px-8"
           initial={{ opacity: 0, y: 20 }}
@@ -32,23 +37,54 @@ export default function Home() {
           transition={{ duration: 1 }}
         >
           <Image 
-            src="/logotipo.svg" 
+            src="/assets/logotipo_-_geomag.png" 
             alt="GeoMAG Logo" 
-            width={300} 
-            height={150} 
-            className="mx-auto mb-8 filter drop-shadow-lg"
+            width={400} 
+            height={200} 
+            className="mx-auto mb-12 filter drop-shadow-xl"
+            priority
           />
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            Soluções Topográficas de Alta Precisão
-          </h1>
-          <p className="text-lg sm:text-xl lg:text-2xl mb-8 text-gray-200">
-            Especialistas em levantamento topográfico, georreferenciamento e regularização fundiária.
+          <p className="text-xl sm:text-2xl lg:text-3xl mb-12 text-gray-100 font-light tracking-wide">
+            <span className="hidden lg:inline flex items-center justify-center gap-6">
+              <span className="flex items-center gap-2">
+                <FaMapMarked className="text-white text-3xl" />
+                <span className="font-bold">Georreferenciamento</span>
+              </span>
+              <span className="text-gray-400">-</span>
+              <span className="flex items-center gap-2">
+                <MdNaturePeople className="text-white text-3xl" />
+                <span className="font-bold">Meio Ambiente</span>
+              </span>
+              <span className="text-gray-400">-</span>
+              <span className="flex items-center gap-2">
+                <FaGlobeAmericas className="text-white text-3xl" />
+                <span className="font-bold">Geoprocessamento</span>
+              </span>
+            </span>
+            <span className="lg:hidden flex flex-col gap-4">
+              <span className="flex items-center justify-center gap-2">
+                <FaMapMarked className="text-white text-3xl" />
+                <span className="font-bold">Georreferenciamento</span>
+              </span>
+              <span className="flex items-center justify-center gap-2">
+                <MdNaturePeople className="text-white text-3xl" />
+                <span className="font-bold">Meio Ambiente</span>
+              </span>
+              <span className="flex items-center justify-center gap-2">
+                <FaGlobeAmericas className="text-white text-3xl" />
+                <span className="font-bold">Geoprocessamento</span>
+              </span>
+            </span>
           </p>
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            className="inline-block"
           >
-            <Button className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-6 rounded-full shadow-lg transition-all duration-300">
+            <Button 
+              onClick={scrollToContact}
+              className="bg-blue-600 hover:bg-blue-700 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-5 rounded-full shadow-lg transition-all duration-300 font-medium tracking-wide"
+            >
               Solicite um Orçamento
             </Button>
           </motion.div>
@@ -147,7 +183,7 @@ export default function Home() {
       </section>
 
       {/* Contato */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <section id="contato" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="container mx-auto max-w-4xl">
           <motion.div 
             className="text-center mb-16"
