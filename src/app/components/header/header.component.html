@@ -1,0 +1,25 @@
+<header class="header">
+  <div class="container header-container">
+    <div class="logo">
+      <a routerLink="/">
+        <img src="assets/images/logo-GeoMAG-2021.svg" alt="GeoMAG Engenharia e Topografia">
+      </a>
+    </div>
+    <nav [class.active]="isMenuOpen">
+      <button class="menu-toggle" (click)="toggleMenu()" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul>
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Início</a></li>
+        <li><a routerLink="/sobre" routerLinkActive="active">Sobre nós</a></li>
+        <li><a routerLink="/servicos" routerLinkActive="active">Serviços</a></li>
+        <li><a routerLink="/projetos" routerLinkActive="active">Projetos</a></li>
+        <li><a routerLink="/blog" routerLinkActive="active">Blog</a></li>
+        <li><a routerLink="/contato" routerLinkActive="active">Contato</a></li>
+        <li><a href="#" class="btn-cliente">Área do Cliente</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

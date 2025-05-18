@@ -1,0 +1,87 @@
+<section class="hero">
+  <div class="container">
+    <h1>Soluções em topografia para seu projeto</h1>
+    <p>A GeoMAG oferece soluções em topografia para diversas áreas, incluindo construção civil, estudos ambientais e hidrológicos, georreferenciamento de imóveis rurais e acompanhamento de obras.</p>
+    <a routerLink="/servicos" class="btn">Saiba mais</a>
+  </div>
+</section>
+
+<section class="services">
+  <div class="container">
+    <div class="section-title">
+      <h2>Levantamentos topográficos</h2>
+      <p>Conheça nossos serviços especializados em topografia e engenharia</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card" *ngFor="let service of services">
+        <img [src]="service.image" [alt]="service.title">
+        <div class="service-card-content">
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+          <a routerLink="/servicos" class="btn-saiba-mais">Saiba mais</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-summary">
+  <div class="container">
+    <div class="about-content">
+      <h2>Sobre a GeoMAG</h2>
+      <p>A GeoMAG Engenharia e Topografia é uma empresa especializada em serviços topográficos, oferecendo soluções precisas e confiáveis para projetos de engenharia, arquitetura e construção civil. Com uma equipe qualificada e equipamentos de última geração, garantimos resultados de alta qualidade e precisão.</p>
+      <a routerLink="/sobre" class="btn">Conheça nossa história</a>
+    </div>
+  </div>
+</section>
+
+<section class="projects">
+  <div class="container">
+    <div class="section-title">
+      <h2>Nossos Projetos</h2>
+      <p>Conheça alguns dos projetos realizados pela GeoMAG em diferentes áreas de atuação</p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card" *ngFor="let project of projects">
+        <img [src]="project.image" [alt]="project.title">
+        <div class="project-overlay">
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="container">
+    <div class="section-title">
+      <h2>Depoimentos</h2>
+      <p>O que nossos clientes dizem sobre nossos serviços</p>
+    </div>
+
+    <div class="testimonials-container">
+      <div class="testimonial-card" *ngFor="let testimonial of testimonials">
+        <div class="testimonial-content">
+          <p>{{ testimonial.content }}</p>
+        </div>
+        <div class="testimonial-author">
+          <div>
+            <h4>{{ testimonial.author }}</h4>
+            <p>{{ testimonial.company }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-cta">
+  <div class="container">
+    <h2>Entre em Contato</h2>
+    <p>Estamos prontos para atender às suas necessidades em topografia e engenharia</p>
+    <a routerLink="/contato" class="btn">Solicite um orçamento</a>
+  </div>
+</section>
