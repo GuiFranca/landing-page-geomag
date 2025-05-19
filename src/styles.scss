@@ -2,14 +2,18 @@
 /* Estilos extraídos do site */
 
 :root {
-  --theme-palette-color-1: #287a55;
-  --theme-palette-color-2: #33a370;
-  --theme-palette-color-3: #415161;
-  --theme-palette-color-4: #2c3e50;
-  --theme-palette-color-5: #E2E7ED;
-  --theme-palette-color-6: #edeff2;
-  --theme-palette-color-7: #f8f9fb;
-  --theme-palette-color-8: #ffffff;
+  --theme-palette-color-1: #596E88;  /* shade 20 % mais escuro – hover/borda */
+  --theme-palette-color-2: #778DA9;  /* cor principal (brand / botões) */
+  --theme-palette-color-3: #9AA9BF;  /* 20 % mais claro – ícones, detalhes */
+
+  /* Neutros profundos (layouts, header, footer) */
+  --theme-palette-color-4: #2C3E50;  /* permanece, combina com azul */
+
+  /* Neutros claros (fundos, seções, cards) */
+  --theme-palette-color-5: #D9DFE7;  /* equivalente ao antigo #E2E7ED, porém com matiz azul-gelo */
+  --theme-palette-color-6: #E9ECF2;  /* fundos suaves – formulários, painéis */
+  --theme-palette-color-7: #F7F9FC;  /* quase-branco levemente frio – blocos alternados */
+  --theme-palette-color-8: #FFFFFF;  /* branco puro – textos sobre cor-1 ou cor-2 */
 }
 
 body {
