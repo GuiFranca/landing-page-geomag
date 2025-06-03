@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+interface Service {
+  title: string;
+  description: string;
+  icon: string;
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,36 +15,36 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule]
 })
 export class HomeComponent {
-  services = [
+  services: Service[] = [
     {
-      title: 'Levantamento planialtimétrico',
-      description: 'Mapeamento detalhado do terreno com curvas de nível e elementos existentes.',
-      image: 'assets/images/service-1.jpg'
+      title: 'Levantamentos Topográficos',
+      description: 'Levantamentos precisos para projetos de construção, planejamento urbano e rural.',
+      icon: 'map'
     },
     {
-      title: 'Locação e demarcação de áreas',
-      description: 'Definição precisa de limites e áreas para construção e regularização.',
-      image: 'assets/images/service-2.jpg'
+      title: 'Georreferenciamento',
+      description: 'Serviços de georreferenciamento para certificação de imóveis rurais e urbanos.',
+      icon: 'globe'
     },
     {
-      title: 'Aerolevantamento',
-      description: 'Captura de imagens aéreas para mapeamento e análise de grandes áreas.',
-      image: 'assets/images/service-3.jpg'
+      title: 'Divisão e Unificação de Áreas',
+      description: 'Processos de divisão e unificação de áreas, garantindo a regularização fundiária.',
+      icon: 'ruler'
     },
     {
-      title: 'Batimetria',
-      description: 'Medição de profundidade e relevo de corpos d\'água.',
-      image: 'assets/images/service-4.jpg'
+      title: 'Topografia para Obras',
+      description: 'Topografia especializada para obras de infraestrutura, edificações e loteamentos.',
+      icon: 'mountain'
     },
     {
-      title: 'Laser Scanner (Lidar)',
-      description: 'Escaneamento 3D de alta precisão para modelagem detalhada.',
-      image: 'assets/images/service-5.jpg'
+      title: 'Regularização Fundiária',
+      description: 'Regularização de imóveis, incluindo retificação de áreas e limites.',
+      icon: 'home'
     },
     {
-      title: 'Levantamento indoor e outdoor',
-      description: 'Mapeamento completo de ambientes internos e externos.',
-      image: 'assets/images/service-6.jpg'
+      title: 'Projetos Viários',
+      description: 'Projetos viários, desde o planejamento até a execução, com precisão e qualidade.',
+      icon: 'road'
     }
   ];
 
