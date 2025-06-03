@@ -73,7 +73,8 @@
 @media (max-width: 900px) {
   .hero {
     justify-content: center;
-    min-height: 340px;
+    min-height: 100vh;
+    padding: 20px;
   }
   .hero-card {
     margin: 32px 0;
@@ -84,13 +85,18 @@
 
 @media (max-width: 600px) {
   .hero {
-    min-height: 220px;
+    min-height: 100vh;
+    padding: 16px;
+  }
+  .hero-card {
+    margin: 0;
+    padding: 24px 16px;
   }
   .hero-card h1 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
   .hero-card p {
-    font-size: 0.98rem;
+    font-size: 1rem;
   }
   .hero-divider {
     height: 4px;
