@@ -31,7 +31,7 @@
   </div>
 </section>
 
-<section class="about-summary" id="sobre">
+<!-- <section class="about-summary" id="sobre">
   <div class="container">
     <div class="about-content">
       <h2>Sobre a GeoMAG</h2>
@@ -58,7 +58,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <section class="testimonials" id="depoimentos">
   <div class="container">
@@ -83,10 +83,42 @@
   </div>
 </section>
 
-<section class="contact-cta" id="contato">
-  <div class="container">
-    <h2>Entre em Contato</h2>
-    <p>Estamos prontos para atender às suas necessidades em topografia e engenharia</p>
-    <a href="mailto:contato@geomag.com.br" class="btn">Solicite um orçamento</a>
+<section class="contact-section" id="contato">
+  <div class="contact-container">
+    <div class="contact-main">
+      <h2>Entre em Contato</h2>
+      <p>Escolha sua forma preferida de nos contatar. Estamos aqui para ajudar!</p>
+      <div class="contact-actions">
+        <a href="https://wa.me/SEUNUMERO" target="_blank" class="contact-btn whatsapp">
+          <i class="fab fa-whatsapp"></i> Conversar no WhatsApp
+        </a>
+        <a href="mailto:contato@geomag.com.br" class="contact-btn email">
+          <i class="fas fa-envelope"></i> Enviar E-mail
+        </a>
+      </div>
+      <p class="contact-or">Ou preencha o formulário abaixo:</p>
+      <form class="contact-form">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte-nos sobre seu projeto" required></textarea>
+        <button type="submit" class="contact-submit">Enviar Mensagem</button>
+      </form>
+    </div>
+    <div class="contact-side">
+      <div class="contact-map">
+        <iframe
+          src="https://www.google.com/maps?q=GeoMAG+-+Topografia+%26+Engenharia&output=embed"
+          width="100%" height="180" style="border:0; border-radius:8px; min-height:160px; max-height:180px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="contact-info">
+        <h3>Localização do Escritório</h3>
+        <p>Rua Lino Marino Petena, 270<br>Santa Rita, Capivari - SP</p>
+        <h3>Informações de Contato</h3>
+        <p>Telefone: (19) 1234-5678<br>E-mail: contato<br>Horário: Seg-Sex, 9h-17h</p>
+      </div>
+    </div>
   </div>
 </section>
