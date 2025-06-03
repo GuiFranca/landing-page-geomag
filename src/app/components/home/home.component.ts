@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 interface Service {
   title: string;
@@ -15,6 +16,8 @@ interface Service {
   imports: [CommonModule]
 })
 export class HomeComponent {
+  whatsappNumber = environment.whatsappNumber;
+
   services: Service[] = [
     {
       title: 'Levantamentos Topográficos',
