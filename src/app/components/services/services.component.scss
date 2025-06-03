@@ -1,0 +1,142 @@
+.services-page {
+  padding: 80px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title h1 {
+  font-size: 2.5rem;
+  color: var(--theme-palette-color-4);
+  margin-bottom: 15px;
+}
+
+.services-intro {
+  max-width: 800px;
+  margin: 0 auto 60px;
+  text-align: center;
+}
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.service-item {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  background-color: var(--theme-palette-color-8);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.service-item:nth-child(even) {
+  grid-template-columns: 2fr 1fr;
+}
+
+.service-item:nth-child(even) .service-image {
+  order: 2;
+}
+
+.service-item:nth-child(even) .service-details {
+  order: 1;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-details {
+  padding: 30px;
+}
+
+.service-details h2 {
+  font-size: 1.8rem;
+  color: var(--theme-palette-color-4);
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.service-details p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.service-details h3 {
+  font-size: 1.3rem;
+  color: var(--theme-palette-color-4);
+  margin-bottom: 15px;
+}
+
+.service-details ul {
+  margin-bottom: 25px;
+  padding-left: 20px;
+}
+
+.service-details ul li {
+  margin-bottom: 8px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: var(--theme-palette-color-1);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--theme-palette-color-2);
+}
+
+.cta-section {
+  text-align: center;
+  background-color: var(--theme-palette-color-7);
+  padding: 60px;
+  border-radius: 8px;
+}
+
+.cta-section h2 {
+  font-size: 2rem;
+  color: var(--theme-palette-color-4);
+  margin-bottom: 15px;
+}
+
+.cta-section p {
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
+
+@media (max-width: 768px) {
+  .service-item,
+  .service-item:nth-child(even) {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-item:nth-child(even) .service-image {
+    order: 1;
+  }
+  
+  .service-item:nth-child(even) .service-details {
+    order: 2;
+  }
+  
+  .service-image {
+    height: 250px;
+  }
+  
+  .cta-section {
+    padding: 40px 20px;
+  }
+}

@@ -1,0 +1,128 @@
+<section class="hero" id="inicio">
+  <img src="assets/images/hero-topo-2.png" alt="Drone sobre floresta" class="hero-bg" />
+  <div class="hero-card">
+    <h1>Soluções em topografia para seu projeto</h1>
+    <hr class="hero-divider" />
+    <p>A GeoMAG oferece soluções em topografia para diversas áreas, incluindo construção civil, estudos ambientais e hidrológicos, georreferenciamento de imóveis rurais e acompanhamento de obras.</p>
+    <a href="#servicos" class="btn">Saiba mais...</a>
+  </div>
+</section>
+
+<section class="w-full bg-theme-7 py-16 overflow-x-hidden" id="servicos">
+  <div class="max-w-6xl w-full mx-auto px-2 md:px-4">
+    <h2 class="text-4xl font-bold text-center text-theme-4 mb-4">Nossos Serviços</h2>
+    <p class="text-lg text-center text-theme-3 mb-12">Soluções abrangentes de agrimensura e engenharia adaptadas para atender aos requisitos específicos do seu projeto.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <ng-container *ngFor="let service of services">
+        <div class="bg-theme-8 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+          <div class="mb-4">
+            <ng-container [ngSwitch]="service.icon">
+              <svg *ngSwitchCase="'drone'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-theme-2 mx-auto"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
+              <svg *ngSwitchCase="'map'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-theme-2 mx-auto"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
+              <svg *ngSwitchCase="'globe'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-theme-2 mx-auto"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+              <svg *ngSwitchCase="'ruler'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-theme-2 mx-auto"><rect x="3" y="10" width="18" height="4" rx="2" stroke-width="2"/><path stroke-linecap="round" stroke-width="2" d="M7 10v4M11 10v4M15 10v4"/></svg>
+              <svg *ngSwitchCase="'mountain'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-theme-2 mx-auto"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 20l7-12 4 7 3-5 4 10z"/></svg>
+              <svg *ngSwitchCase="'home'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-theme-2 mx-auto"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l9-9 9 9M4 10v10a1 1 0 001 1h3m10-11v10a1 1 0 01-1 1h-3m-4 0h4" /></svg>
+              <svg *ngSwitchCase="'layers'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-theme-2 mx-auto"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4l8 4-8 4-8-4 8-4zm0 6l8 4-8 4-8-4 8-4zm0 6l8 4-8 4-8-4 8-4z"/></svg>
+            </ng-container>
+
+          </div>
+          <h3 class="text-xl font-semibold text-theme-4 mb-2 text-center">{{ service.title }}</h3>
+          <p class="text-theme-3 text-center">{{ service.description }}</p>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="about-summary" id="sobre">
+  <div class="container">
+    <div class="about-content">
+      <h2>Sobre a GeoMAG</h2>
+      <p>A GeoMAG Engenharia e Topografia é uma empresa especializada em serviços topográficos, oferecendo soluções precisas e confiáveis para projetos de engenharia, arquitetura e construção civil. Com uma equipe qualificada e equipamentos de última geração, garantimos resultados de alta qualidade e precisão.</p>
+      <a href="#contato" class="btn">Entre em contato</a>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="projetos">
+  <div class="container">
+    <div class="section-title">
+      <h2>Nossos Projetos</h2>
+      <p>Conheça alguns dos projetos realizados pela GeoMAG em diferentes áreas de atuação</p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card" *ngFor="let project of projects">
+        <img [src]="project.image" [alt]="project.title">
+        <div class="project-overlay">
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="testimonials" id="depoimentos">
+  <div class="container">
+    <div class="section-title">
+      <h2>Depoimentos</h2>
+      <p>O que nossos clientes dizem sobre nossos serviços</p>
+    </div>
+
+    <div class="testimonials-container">
+      <div class="testimonial-card" *ngFor="let testimonial of testimonials">
+        <div class="testimonial-content">
+          <p>{{ testimonial.content }}</p>
+        </div>
+        <div class="testimonial-author">
+          <div>
+            <h4>{{ testimonial.author }}</h4>
+            <p>{{ testimonial.company }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contato">
+  <div class="contact-container">
+    <div class="contact-main">
+      <h2>Entre em Contato</h2>
+      <p>Escolha sua forma preferida de nos contatar. Estamos aqui para ajudar!</p>
+      <div class="contact-actions">
+        <a href="https://wa.me/SEUNUMERO" target="_blank" class="contact-btn whatsapp">
+          <i class="fab fa-whatsapp"></i> Conversar no WhatsApp
+        </a>
+        <a href="mailto:contato@geomag.com.br" class="contact-btn email">
+          <i class="fas fa-envelope"></i> Enviar E-mail
+        </a>
+      </div>
+      <p class="contact-or">Ou preencha o formulário abaixo:</p>
+      <form class="contact-form">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte-nos sobre seu projeto" required></textarea>
+        <button type="submit" class="contact-submit">Enviar Mensagem</button>
+      </form>
+    </div>
+    <div class="contact-side">
+      <div class="contact-map">
+        <iframe
+          src="https://www.google.com/maps?q=GeoMAG+-+Topografia+%26+Engenharia&output=embed"
+          width="100%" height="180" style="border:0; border-radius:8px; min-height:160px; max-height:180px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="contact-info">
+        <h3>Localização do Escritório</h3>
+        <p>Rua Lino Marino Petena, 270<br>Santa Rita, Capivari - SP</p>
+        <h3>Informações de Contato</h3>
+        <p>Telefone: (19) 1234-5678<br>E-mail: contato<br>Horário: Seg-Sex, 9h-17h</p>
+      </div>
+    </div>
+  </div>
+</section>

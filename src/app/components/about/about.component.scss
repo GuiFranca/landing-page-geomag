@@ -1,0 +1,155 @@
+.about-page {
+  padding: 80px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title h1 {
+  font-size: 2.5rem;
+  color: var(--theme-palette-color-4);
+  margin-bottom: 15px;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.about-text h2 {
+  font-size: 1.8rem;
+  color: var(--theme-palette-color-4);
+  margin: 30px 0 15px;
+}
+
+.about-text h2:first-child {
+  margin-top: 0;
+}
+
+.about-text p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.about-text ul {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.about-text ul li {
+  margin-bottom: 10px;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.team-section {
+  margin-bottom: 60px;
+}
+
+.team-section h2 {
+  font-size: 2rem;
+  color: var(--theme-palette-color-4);
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.team-section > p {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 40px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.team-card {
+  background-color: var(--theme-palette-color-8);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.team-image img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.team-info {
+  padding: 20px;
+}
+
+.team-info h3 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: var(--theme-palette-color-4);
+}
+
+.team-info .position {
+  color: var(--theme-palette-color-1);
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.team-info .bio {
+  margin-bottom: 0;
+}
+
+.cta-section {
+  text-align: center;
+  background-color: var(--theme-palette-color-7);
+  padding: 60px;
+  border-radius: 8px;
+}
+
+.cta-section h2 {
+  font-size: 2rem;
+  color: var(--theme-palette-color-4);
+  margin-bottom: 15px;
+}
+
+.cta-section p {
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: var(--theme-palette-color-1);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--theme-palette-color-2);
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-image {
+    order: -1;
+  }
+  
+  .cta-section {
+    padding: 40px 20px;
+  }
+}

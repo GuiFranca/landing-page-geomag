@@ -1,0 +1,60 @@
+<section class="about-page">
+  <div class="container">
+    <div class="section-title">
+      <h1>Sobre a GeoMag</h1>
+      <p>Conheça nossa história, missão e valores</p>
+    </div>
+
+    <div class="about-content">
+      <div class="about-text">
+        <h2>Nossa História</h2>
+        <p>A GeoMAG Engenharia e Topografia é uma empresa especializada em serviços topográficos, oferecendo soluções precisas e confiáveis para projetos de engenharia, arquitetura e construção civil. Com uma equipe qualificada e equipamentos de última geração, garantimos resultados de alta qualidade e precisão.</p>
+
+        <p>Fundada com o objetivo de atender às necessidades do mercado de engenharia e construção, a GeoMAG tem se destacado pela excelência técnica e compromisso com a satisfação dos clientes.</p>
+
+        <h2>Missão</h2>
+        <p>Oferecer soluções em topografia e engenharia com excelência técnica, precisão e confiabilidade, contribuindo para o sucesso dos projetos de nossos clientes.</p>
+
+        <h2>Visão</h2>
+        <p>Ser referência nacional em serviços topográficos, reconhecida pela qualidade, inovação e compromisso com a satisfação dos clientes.</p>
+
+        <h2>Valores</h2>
+        <ul>
+          <li>Excelência técnica</li>
+          <li>Compromisso com prazos</li>
+          <li>Ética e transparência</li>
+          <li>Inovação tecnológica</li>
+          <li>Responsabilidade socioambiental</li>
+        </ul>
+      </div>
+
+      <div class="about-image">
+        <img src="assets/images/about-company.jpg" alt="GeoMAG Engenharia e Topografia">
+      </div>
+    </div>
+
+    <div class="team-section">
+      <h2>Nossa Equipe</h2>
+      <p>Conheça os profissionais que fazem parte da GeoMAG</p>
+
+      <div class="team-grid">
+        <div class="team-card" *ngFor="let member of team">
+          <div class="team-image">
+            <img [src]="member.image" [alt]="member.name">
+          </div>
+          <div class="team-info">
+            <h3>{{ member.name }}</h3>
+            <p class="position">{{ member.position }}</p>
+            <p class="bio">{{ member.bio }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <h2>Trabalhe com a GeoMAG</h2>
+      <p>Entre em contato conosco para solicitar um orçamento ou esclarecer dúvidas sobre nossos serviços.</p>
+      <a routerLink="/contato" class="btn">Entre em contato</a>
+    </div>
+  </div>
+</section>
