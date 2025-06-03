@@ -42,9 +42,9 @@ export class HomeComponent {
       icon: 'home'
     },
     {
-      title: 'Projetos Viários',
-      description: 'Projetos viários, desde o planejamento até a execução, com precisão e qualidade.',
-      icon: 'road'
+      title: 'Mapeamento 3D',
+      description: 'Serviços avançados de digitalização e modelagem 3D para projetos arquitetônicos e de engenharia complexos.',
+      icon: 'layers'
     }
   ];
 
