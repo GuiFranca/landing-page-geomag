@@ -1,4 +1,11 @@
-# LandingPageGeomag
+# GeoMAG Landing Page
+
+This project is the landing page for GeoMAG, a company specializing in topography and georeferencing services. The website is built using Angular and includes the following main sections:
+
+*   **Home:** Displays a list of services, projects, and testimonials.
+*   **About:** Shows information about the team.
+*   **Services:** Provides a detailed list of services offered by GeoMAG.
+*   **Contact:** Includes a contact form.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
 
