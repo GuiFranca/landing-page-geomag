@@ -1,11 +1,16 @@
 # GeoMAG Landing Page
 
-This project is the landing page for GeoMAG, a company specializing in topography and georeferencing services. The website is built using Angular and includes the following main sections:
+This project is the landing page for GeoMAG, a company specializing in topography and georeferencing services. The website is built using Angular and consists of a single **Home** route that aggregates the main sections of the site:
 
-*   **Home:** Displays a list of services, projects, and testimonials.
-*   **About:** Shows information about the team.
-*   **Services:** Provides a detailed list of services offered by GeoMAG.
-*   **Contact:** Includes a contact form.
+*   **About:** Presents information about the team.
+*   **Services:** Lists the services offered by GeoMAG.
+*   **Contact:** Provides a form and other contact options.
+
+These sections appear on the home page rather than as separate routes.
+
+## Routing
+
+The routing configuration is minimal. `app.routes.ts` defines a single empty path (`''`) that loads `HomeComponent`, and all other paths redirect back to this route.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
 
