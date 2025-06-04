@@ -1,17 +1,17 @@
 <section class="hero" id="inicio">
   <img src="assets/images/hero-topo-2.png" alt="Drone sobre floresta" class="hero-bg" />
   <div class="hero-card">
-    <h1>Soluções em topografia para seu projeto</h1>
+    <h1>Soluções em topografia</h1>
     <hr class="hero-divider" />
     <p>A GeoMAG oferece soluções em topografia para diversas áreas, incluindo construção civil, estudos ambientais e hidrológicos, georreferenciamento de imóveis rurais e acompanhamento de obras.</p>
-    <a href="#servicos" class="btn">Conheça Nossos Serviços</a>
+    <!-- <a href="#servicos" class="btn">Saiba mais...</a> -->
   </div>
 </section>
 
 <section class="w-full bg-theme-7 py-16 overflow-x-hidden" id="servicos">
   <div class="max-w-6xl w-full mx-auto px-2 md:px-4">
     <h2 class="text-4xl font-bold text-center text-theme-4 mb-4">Nossos Serviços</h2>
-    <p class="text-lg text-center text-theme-3 mb-12">Soluções abrangentes de agrimensura e engenharia adaptadas para atender aos requisitos específicos do seu projeto.</p>
+    <p class="text-lg text-center text-theme-4 mb-12 font-medium">Soluções abrangentes de agrimensura e engenharia adaptadas para atender aos requisitos específicos do seu projeto.</p>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <ng-container *ngFor="let service of services">
         <div class="bg-theme-8 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
@@ -64,7 +64,7 @@
   </div>
 </section> -->
 
-<section class="testimonials" id="depoimentos">
+<!-- <section class="testimonials" id="depoimentos">
   <div class="container">
     <div class="section-title">
       <h2>Depoimentos</h2>
@@ -85,7 +85,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <section class="contact-section" id="contato">
   <div class="contact-container">
@@ -93,7 +93,7 @@
       <h2>Entre em Contato</h2>
       <p>Escolha sua forma preferida de nos contatar. Estamos aqui para ajudar!</p>
       <div class="contact-actions">
-        <a href="https://wa.me/SEUNUMERO" target="_blank" class="contact-btn whatsapp">
+        <a [href]="'https://wa.me/' + whatsappNumber" target="_blank" class="contact-btn whatsapp">
           <i class="fab fa-whatsapp"></i> Conversar no WhatsApp
         </a>
         <a href="mailto:contato@geomag.com.br" class="contact-btn email">
@@ -121,8 +121,12 @@
         <h3>Localização do Escritório</h3>
         <p>Rua Lino Marino Petena, 270<br>Santa Rita, Capivari - SP</p>
         <h3>Informações de Contato</h3>
-        <p>Telefone: (19) 1234-5678<br>E-mail: contato<br>Horário: Seg-Sex, 9h-17h</p>
+        <p>Telefone: (19) 1234-5678<br>E-mail: <br>Horário: Seg-Sex, 8h-17:30h</p>
       </div>
     </div>
   </div>
 </section>
+
+<a [href]="'https://wa.me/' + whatsappNumber" target="_blank" class="whatsapp-float">
+  <i class="fab fa-whatsapp"></i>
+</a>
