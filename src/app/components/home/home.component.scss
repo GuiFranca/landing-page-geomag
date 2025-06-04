@@ -1,3 +1,22 @@
+// Variáveis para cores e valores comuns
+$shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+$shadow-md: 0 3px 10px rgba(0,0,0,0.1);
+$border-radius: 8px;
+$transition-base: 0.2s;
+
+// Mixins para reutilização
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin card-base {
+  background: #fff;
+  border-radius: $border-radius;
+  box-shadow: $shadow-sm;
+}
+
 .hero {
   position: relative;
   min-height: 450px;
