@@ -134,4 +134,10 @@
   .features-grid {
     grid-template-columns: 1fr;
   }
+
+  .feat-card:last-child:nth-child(2n - 1) {
+    grid-column: auto;
+    max-width: none;
+    margin-inline: 0;
+  }
 }
