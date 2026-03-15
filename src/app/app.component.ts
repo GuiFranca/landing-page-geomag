@@ -2,18 +2,11 @@ import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    RouterOutlet,
-    HeaderComponent,
-    FooterComponent
-  ],
+  imports: [RouterModule, RouterOutlet, HeaderComponent, FooterComponent],
   template: `
     <app-header></app-header>
     <main>
@@ -21,13 +14,7 @@ import { CommonModule } from '@angular/common';
     </main>
     <app-footer></app-footer>
   `,
-  styles: [
-    `
-      main {
-        min-height: calc(100vh - 200px);
-      }
-    `,
-  ],
+  styles: []
 })
 export class AppComponent {
   title = 'GeoMAG';
