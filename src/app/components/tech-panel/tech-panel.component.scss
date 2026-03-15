@@ -1,0 +1,109 @@
+.dark-panel {
+  background: var(--gradient-dark-panel);
+  color: #e4eff5;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(74, 128, 164, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74, 128, 164, 0.04) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .s-title {
+    color: #e4eff5;
+  }
+
+  .s-desc {
+    color: #7a9fb5;
+  }
+
+  .s-label {
+    color: var(--accent-light);
+
+    &::before {
+      background: var(--accent-light);
+    }
+  }
+}
+
+.tech-header {
+  margin-bottom: var(--sp-4);
+  position: relative;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-4);
+  margin-top: var(--sp-12);
+  position: relative;
+}
+
+.tech-item {
+  padding: var(--sp-6);
+  text-align: center;
+  border: 1px solid rgba(74, 128, 164, 0.15);
+  border-radius: var(--r-xl);
+  background: rgba(255, 255, 255, 0.03);
+  transition: border-color var(--dur-medium),
+              transform var(--dur-medium) var(--ease-spring),
+              background var(--dur-medium);
+
+  &:hover {
+    border-color: rgba(74, 128, 164, 0.4);
+    transform: translateY(-3px);
+    background: rgba(74, 128, 164, 0.07);
+  }
+}
+
+.tech-item__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-lg);
+  background: rgba(74, 128, 164, 0.12);
+  border: 1px solid rgba(74, 128, 164, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--sp-4);
+
+  svg {
+    width: 20px;
+    height: 20px;
+    stroke: #6aa3c5;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+  }
+}
+
+.tech-item__name {
+  font-family: var(--font-display);
+  font-size: var(--text-h5);
+  font-weight: 600;
+  color: #e4eff5;
+  margin-bottom: var(--sp-2);
+}
+
+.tech-item__desc {
+  font-size: var(--text-body-sm);
+  color: #567a90;
+  line-height: 1.7;
+}
+
+@media (max-width: 1024px) {
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+}
