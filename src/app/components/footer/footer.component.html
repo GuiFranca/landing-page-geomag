@@ -1,29 +1,55 @@
-<footer>
-  <div class="container footer-container">
-    <div class="footer-column">
-      <h3>GeoMAG Engenharia</h3>
-      <p>Soluções em topografia para seu projeto</p>
-      <div class="social-links">
-        <!-- <a href="https://www.facebook.com/GeoMAGEngenharia/" target="_blank" aria-label="Facebook">
-          <i class="fab fa-facebook-f"></i>
-        </a> -->
-        <a href="https://www.instagram.com/geomag.br/" target="_blank" aria-label="Instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <!-- Brand Column -->
+      <div>
+        <div class="footer__logo">
+          <img src="assets/images/logo.svg" alt="GeoMAG">
+        </div>
+        <p class="footer__desc">
+          Topografia e projetos de alta precisão geoespacial para engenharia,
+          infraestrutura e planejamento territorial.
+        </p>
+        <div class="footer__cert">
+          CREA-SP Registrado<br>
+          Capivari · SP · Brasil
+        </div>
+      </div>
+
+      <!-- Services Column -->
+      <div>
+        <div class="footer__col-ttl">Serviços</div>
+        <ul class="footer__links">
+          <li *ngFor="let link of serviceLinks">
+            <a [href]="link.href">{{ link.label }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Technology Column -->
+      <div>
+        <div class="footer__col-ttl">Tecnologia</div>
+        <ul class="footer__links">
+          <li *ngFor="let link of techLinks">
+            <a [href]="link.href">{{ link.label }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Company Column -->
+      <div>
+        <div class="footer__col-ttl">Empresa</div>
+        <ul class="footer__links">
+          <li *ngFor="let link of companyLinks">
+            <a [href]="link.href">{{ link.label }}</a>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="footer-column">
-      <h3>Contato</h3>
-      <ul>
-        <li><i class="fas fa-map-marker-alt"></i> Rua Lino Marino Petena, 270 - Santa Rita, Capivari - SP</li>
-        <li><i class="fas fa-phone"></i> [Número de telefone]</li>
-        <li><i class="fas fa-envelope"></i> contato</li>
-      </ul>
-    </div>
-  </div>
-  <div class="copyright">
-    <div class="container">
-      <p>&copy; {{currentYear}} GeoMAG Engenharia e Topografia. Todos os direitos reservados.</p>
+
+    <div class="footer__bottom">
+      <span class="footer__copy">© {{ currentYear }} GeoMAG Engenharia e Topografia · Todos os direitos reservados</span>
+      <span class="footer__tagline">Design System v2.0</span>
     </div>
   </div>
 </footer>
