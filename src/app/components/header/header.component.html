@@ -1,10 +1,30 @@
-<header class="header">
-  <div class="container header-container">
-    <div class="logo">
-      <a href="#">
-        <img src="../../../assets/images/logo.svg" alt="GeoMAG Engenharia e Topografia">
+<header class="navbar" [class.scrolled]="isScrolled">
+  <div class="container">
+    <div class="navbar__inner">
+      <a href="#inicio" class="navbar__logo">
+        <img src="assets/images/logo.svg" alt="GeoMAG Engenharia e Topografia">
       </a>
+
+      <ul class="navbar__nav" [class.navbar__nav--open]="isMenuOpen">
+        <li *ngFor="let link of navLinks">
+          <a [href]="link.href" (click)="closeMenu()">{{ link.label }}</a>
+        </li>
+      </ul>
+
+      <div class="navbar__actions">
+        <a [href]="whatsappUrl" target="_blank" rel="noopener noreferrer"
+           class="btn btn--primary btn--sm">
+          Solicitar Orçamento
+        </a>
+      </div>
+
+      <button class="navbar__hamburger"
+              [class.navbar__hamburger--active]="isMenuOpen"
+              (click)="toggleMenu()"
+              [attr.aria-expanded]="isMenuOpen"
+              aria-label="Menu de navegação">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <a href="#contato" class="btn-cliente">Solicite um orçamento</a>
   </div>
 </header>

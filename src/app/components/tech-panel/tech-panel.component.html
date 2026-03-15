@@ -1,0 +1,27 @@
+<section id="tecnologia" class="dark-panel section" aria-labelledby="tecnologia-title">
+  <div class="container">
+    <div class="tech-header" appReveal>
+      <div class="s-label">Tecnologia</div>
+      <h2 id="tecnologia-title" class="s-title">
+        Equipamentos de <span class="gradient-text">Ponta</span>
+      </h2>
+      <p class="s-desc">
+        Utilizamos as tecnologias mais avançadas do mercado para garantir
+        máxima precisão e eficiência em cada projeto.
+      </p>
+    </div>
+
+    <div class="tech-grid">
+      <div class="tech-item" *ngFor="let t of technologies; let i = index"
+           appReveal [revealDelay]="(i + 1) * 0.1">
+        <div class="tech-item__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path [attr.d]="t.iconPath" />
+          </svg>
+        </div>
+        <h3 class="tech-item__name">{{ t.name }}</h3>
+        <p class="tech-item__desc">{{ t.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,14 @@
+<section class="metrics-section section" aria-label="Métricas da empresa">
+  <div class="bg-line-t"></div>
+  <div class="container">
+    <div class="metrics-grid">
+      <div class="metric-card" *ngFor="let m of metrics; let i = index"
+           appReveal [revealDelay]="i * 0.1">
+        <div class="metric-card__val">
+          {{ m.value }}<span class="metric-card__unit">{{ m.unit }}</span>
+        </div>
+        <div class="metric-card__lbl">{{ m.label }}</div>
+      </div>
+    </div>
+  </div>
+</section>

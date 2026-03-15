@@ -1,20 +1,18 @@
 module.exports = {
-  content: [
-    "./src/**/*.{html,ts,scss}",
-  ],
+  content: ["./src/**/*.{html,ts,scss}"],
   theme: {
     extend: {
       colors: {
-        'theme-1': 'var(--theme-palette-color-1)',
-        'theme-2': 'var(--theme-palette-color-2)',
-        'theme-3': 'var(--theme-palette-color-3)',
-        'theme-4': 'var(--theme-palette-color-4)',
-        'theme-5': 'var(--theme-palette-color-5)',
-        'theme-6': 'var(--theme-palette-color-6)',
-        'theme-7': 'var(--theme-palette-color-7)',
-        'theme-8': 'var(--theme-palette-color-8)',
-      },
-    },
+        brand: {
+          50: 'var(--brand-050)', 100: 'var(--brand-100)',
+          200: 'var(--brand-200)', 300: 'var(--brand-300)',
+          400: 'var(--brand-400)', 500: 'var(--brand-500)',
+          600: 'var(--brand-600)', 700: 'var(--brand-700)',
+          800: 'var(--brand-800)', 900: 'var(--brand-900)',
+        },
+        accent: 'var(--accent)',
+      }
+    }
   },
   plugins: [],
 }
