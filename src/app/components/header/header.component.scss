@@ -1,7 +1,82 @@
-// Navbar styles are minimal since .navbar, .navbar__inner, .navbar__nav, .btn
-// classes are defined globally in styles.scss. Only component-specific styles here.
+// ─── Navbar layout ──────────────────────────────────────────────────────────
 
-// Mobile hamburger button
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: rgba(245, 248, 250, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--dur-medium), box-shadow var(--dur-medium);
+
+  &.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 20px rgba(14, 34, 50, 0.08);
+  }
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-6);
+  height: 64px;
+}
+
+.navbar__logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+
+  img {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+.navbar__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  justify-content: center;
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color var(--dur-fast);
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+}
+
+.navbar__actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+// ─── Mobile hamburger button ─────────────────────────────────────────────────
 .navbar__hamburger {
   display: none;
   flex-direction: column;
