@@ -22,7 +22,6 @@ export class FooterComponent {
     { label: 'GNSS RTK', href: '#tecnologia' },
     { label: 'Estação Total', href: '#tecnologia' },
     { label: 'Drones/UAV', href: '#tecnologia' },
-    { label: 'BIM', href: '#tecnologia' },
   ];
 
   companyLinks = [
