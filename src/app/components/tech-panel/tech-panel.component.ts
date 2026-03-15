@@ -26,10 +26,5 @@ export class TechPanelComponent {
       description: 'Aerofotogrametria e mapeamento aéreo com câmeras de alta resolução.',
       iconPath: 'M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z'
     },
-    {
-      name: 'Laser Scanner',
-      description: 'Escaneamento 3D de alta densidade para modelagem BIM e as-built.',
-      iconPath: 'M12 3v18M3 12h18M5.636 5.636l12.728 12.728M18.364 5.636L5.636 18.364'
-    },
   ];
 }
