@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(bash \"C:\\\\Users\\\\guilh\\\\.claude\\\\plugins\\\\cache\\\\claude-plugins-official\\\\superpowers\\\\5.0.2\\\\skills\\\\brainstorming\\\\scripts\\\\start-server.sh\" --project-dir \"C:\\\\Users\\\\guilh\\\\GIT\\\\landing-page-geomag\")",
+      "Bash(where npm.cmd)",
+      "Bash(where node:*)",
+      "Bash(npm install:*)",
+      "Bash(where gh:*)"
+    ]
+  }
+}
