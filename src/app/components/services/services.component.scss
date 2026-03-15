@@ -71,20 +71,22 @@
   margin-bottom: var(--sp-6);
   transition: background var(--dur-medium), box-shadow var(--dur-medium);
 
-  svg {
-    width: 22px;
-    height: 22px;
-    stroke: var(--brand-500);
-    fill: none;
-    stroke-width: 1.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+  img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    filter: invert(45%) sepia(40%) saturate(600%) hue-rotate(170deg) brightness(90%);
+    transition: filter var(--dur-medium);
   }
 }
 
 .feat-card:hover .feat-card__icon {
   background: var(--brand-100);
   box-shadow: 0 0 20px rgba(74, 128, 164, 0.2);
+
+  img {
+    filter: invert(45%) sepia(40%) saturate(600%) hue-rotate(170deg) brightness(75%);
+  }
 }
 
 .feat-card__title {
@@ -119,6 +121,12 @@
 @media (max-width: 1024px) {
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .feat-card:last-child:nth-child(2n - 1) {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin-inline: auto;
   }
 }
 
