@@ -6,7 +6,7 @@ interface Service {
   title: string;
   description: string;
   tag: string;
-  iconPath: string;
+  icon: string;
   num: string;
 }
 
@@ -21,45 +21,80 @@ export class ServicesComponent {
   services: Service[] = [
     {
       num: '01',
-      title: 'Topografia Convencional',
+      title: 'Levantamento Topográfico',
       description: 'Levantamentos planialtimétricos com estação total e GNSS, fornecendo dados precisos para projetos de engenharia e construção civil.',
       tag: 'Precisão',
-      iconPath: 'M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0'
+      icon: 'assets/images/services/estacao-total.png'
     },
     {
       num: '02',
-      title: 'Georreferenciamento',
-      description: 'Georreferenciamento de imóveis rurais e urbanos conforme normas do INCRA, com certificação e registro em cartório.',
-      tag: 'INCRA',
-      iconPath: 'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 7m-3 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0'
+      title: 'Mapeamento Cartográfico (SIG)',
+      description: 'Elaboração de mapas temáticos e bases cartográficas digitais integradas a sistemas de informação geográfica para análise e planejamento territorial.',
+      tag: 'SIG',
+      icon: 'assets/images/services/geologico.png'
     },
     {
       num: '03',
-      title: 'Divisão e Desmembramento',
-      description: 'Parcelamento de glebas e lotes com memorial descritivo, plantas e aprovação junto aos órgãos competentes.',
-      tag: 'Parcelamento',
-      iconPath: 'M15 3h6v6 M9 21H3v-6 M21 3l-7 7 M3 21l7-7'
+      title: 'Georreferenciamento',
+      description: 'Georreferenciamento de imóveis rurais e urbanos conforme normas do INCRA, com certificação e registro em cartório.',
+      tag: 'INCRA',
+      icon: 'assets/images/services/rover.png'
     },
     {
       num: '04',
-      title: 'Acompanhamento de Obras',
-      description: 'Locação de obras, controle geométrico e acompanhamento topográfico durante toda execução do projeto.',
-      tag: 'Controle',
-      iconPath: 'M2 20h20 M4 20V8l4-4h8l4 4v12 M9 20v-6h6v6 M9 8h6'
+      title: 'Aerofotogrametria',
+      description: 'Levantamentos aerofotogramétricos com drones de alta resolução para geração de ortomosaicos, MDT e modelos tridimensionais.',
+      tag: 'Drone',
+      icon: 'assets/images/services/drone.png'
     },
     {
       num: '05',
-      title: 'Regularização Fundiária',
-      description: 'Regularização de imóveis urbanos e rurais, com levantamento, memorial descritivo e acompanhamento processual.',
+      title: 'Regularização de Imóvel',
+      description: 'Regularização de imóveis urbanos e rurais, com levantamento, memorial descritivo e acompanhamento processual junto aos órgãos competentes.',
       tag: 'Documentação',
-      iconPath: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6 M16 13H8 M16 17H8 M10 9H8'
+      icon: 'assets/images/services/verificado.png'
     },
     {
       num: '06',
-      title: 'Mapeamento 3D',
-      description: 'Escaneamento a laser e fotogrametria com drones para geração de modelos tridimensionais de alta resolução.',
-      tag: 'Tecnologia',
-      iconPath: 'M12 2L2 7l10 5l10-5-10-5z M2 17l10 5l10-5 M2 12l10 5l10-5'
+      title: 'Proj. e Acomp. de Terraplanagem',
+      description: 'Projetos de corte e aterro com cálculo de volumes, acompanhamento topográfico e controle geométrico durante toda a execução.',
+      tag: 'Terraplenagem',
+      icon: 'assets/images/services/escavadora.png'
+    },
+    {
+      num: '07',
+      title: 'Topografia para Obras',
+      description: 'Locação de obras, controle geométrico e acompanhamento topográfico durante toda a execução do projeto de construção.',
+      tag: 'Controle',
+      icon: 'assets/images/services/construcao.png'
+    },
+    {
+      num: '08',
+      title: 'Desmembramento de Imóveis',
+      description: 'Parcelamento de glebas e lotes com memorial descritivo, plantas e aprovação junto aos órgãos competentes municipais e estaduais.',
+      tag: 'Parcelamento',
+      icon: 'assets/images/services/divisao-areas.png'
+    },
+    {
+      num: '09',
+      title: 'Estudo de Empreendimento',
+      description: 'Análise topográfica e estudos de viabilidade para empreendimentos imobiliários, industriais e de infraestrutura.',
+      tag: 'Viabilidade',
+      icon: 'assets/images/services/engenheiro.png'
+    },
+    {
+      num: '10',
+      title: 'Locação de Divisas e Infra',
+      description: 'Locação de divisas, implantação de infraestrutura e demarcação de redes com precisão milimétrica em campo.',
+      tag: 'Implantação',
+      icon: 'assets/images/services/locacao.png'
+    },
+    {
+      num: '11',
+      title: 'Cadastro Ambiental Rural (CAR)',
+      description: 'Elaboração e regularização do Cadastro Ambiental Rural conforme legislação vigente, com georreferenciamento e submissão ao SICAR.',
+      tag: 'CAR',
+      icon: 'assets/images/services/fazenda.png'
     },
   ];
 }
