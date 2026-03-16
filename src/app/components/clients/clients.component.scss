@@ -1,0 +1,121 @@
+.dark-panel {
+  background: var(--gradient-dark-panel);
+  color: #e4eff5;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(74, 128, 164, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74, 128, 164, 0.04) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .s-title {
+    color: #e4eff5;
+  }
+
+  .s-desc {
+    color: #7a9fb5;
+  }
+
+  .s-label {
+    color: var(--accent-light);
+
+    &::before {
+      background: var(--accent-light);
+    }
+  }
+}
+
+.clients-header {
+  margin-bottom: var(--sp-4);
+  position: relative;
+}
+
+.clients-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  margin-top: var(--sp-12);
+  position: relative;
+}
+
+.clients-track {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-16);
+  width: max-content;
+  animation: marquee 45s linear infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+.clients-logo {
+  height: 52px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+  flex-shrink: 0;
+  padding: var(--sp-3);
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: var(--r-lg);
+  transition: transform var(--dur-medium) ease,
+              box-shadow var(--dur-medium) ease;
+
+  &:hover {
+    transform: scale(1.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 1024px) {
+  .clients-track {
+    gap: var(--sp-12);
+  }
+
+  .clients-logo {
+    height: 40px;
+    max-width: 120px;
+  }
+}
+
+@media (max-width: 640px) {
+  .clients-track {
+    gap: var(--sp-8);
+    animation-duration: 55s;
+  }
+
+  .clients-logo {
+    height: 32px;
+    max-width: 100px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clients-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+  }
+
+  .clients-marquee {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}

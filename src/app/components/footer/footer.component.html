@@ -38,8 +38,14 @@
 
       <!-- Company Column -->
       <div>
-        <div class="footer__col-ttl">Empresa</div>
+        <div class="footer__col-ttl">Contato</div>
         <ul class="footer__links">
+          <li>
+            <a href="mailto:contato@geomag.com.br">contato&#64;geomag.com.br</a>
+          </li>
+          <li>
+            <a href="https://wa.me/5519981837219" target="_blank" rel="noopener noreferrer">(19) 98183-7219</a>
+          </li>
           <li *ngFor="let link of companyLinks">
             <a [href]="link.href">{{ link.label }}</a>
           </li>
