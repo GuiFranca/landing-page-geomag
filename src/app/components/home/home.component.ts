@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HeroComponent } from '../hero/hero.component';
 import { MetricsComponent } from '../metrics/metrics.component';
 import { ServicesComponent } from '../services/services.component';
+import { ClientsComponent } from '../clients/clients.component';
 import { TechPanelComponent } from '../tech-panel/tech-panel.component';
 import { CtaComponent } from '../cta/cta.component';
 import { environment } from '../../../environments/environment';
@@ -15,6 +16,7 @@ import { environment } from '../../../environments/environment';
     HeroComponent,
     MetricsComponent,
     ServicesComponent,
+    ClientsComponent,
     TechPanelComponent,
     CtaComponent,
   ]

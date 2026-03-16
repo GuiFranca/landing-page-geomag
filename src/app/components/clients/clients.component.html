@@ -1,0 +1,29 @@
+<section id="clientes" class="dark-panel section" aria-labelledby="clientes-title">
+  <div class="container">
+    <div class="clients-header" appReveal>
+      <div class="s-label">Clientes</div>
+      <h2 id="clientes-title" class="s-title">
+        Quem <span class="gradient-text">Confia</span> na GeoMAG
+      </h2>
+      <p class="s-desc">
+        Empresas e instituições que escolheram nossa precisão para seus projetos.
+      </p>
+    </div>
+
+    <div class="clients-marquee" appReveal [revealDelay]="0.2">
+      <div class="clients-track">
+        <img *ngFor="let c of clients"
+             [src]="c.logo"
+             [alt]="c.name"
+             class="clients-logo"
+             loading="lazy">
+        <img *ngFor="let c of clients"
+             [src]="c.logo"
+             [alt]="c.name"
+             class="clients-logo"
+             loading="lazy"
+             aria-hidden="true">
+      </div>
+    </div>
+  </div>
+</section>
