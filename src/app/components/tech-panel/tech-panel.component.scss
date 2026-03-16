@@ -72,13 +72,10 @@
   justify-content: center;
   margin: 0 auto var(--sp-4);
 
-  svg {
-    width: 20px;
-    height: 20px;
-    stroke: #6aa3c5;
-    fill: none;
-    stroke-width: 1.5;
-    stroke-linecap: round;
+  img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
   }
 }
 

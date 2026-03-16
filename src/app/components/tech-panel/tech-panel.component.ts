@@ -14,17 +14,17 @@ export class TechPanelComponent {
     {
       name: 'GNSS/RTK',
       description: 'Posicionamento por satélite com precisão centimétrica em tempo real.',
-      iconPath: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'
+      icon: 'assets/images/services/rover.png'
     },
     {
       name: 'Estação Total',
       description: 'Medição angular e de distâncias com tecnologia robótica automatizada.',
-      iconPath: 'M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8zM12 9a3 3 0 100 6 3 3 0 000-6z'
+      icon: 'assets/images/services/estacao-total.png'
     },
     {
       name: 'Drones',
       description: 'Aerofotogrametria e mapeamento aéreo com câmeras de alta resolução.',
-      iconPath: 'M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z'
+      icon: 'assets/images/services/drone.png'
     },
   ];
 }
