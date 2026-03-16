@@ -134,12 +134,11 @@
   .navbar__nav {
     display: none;
     position: fixed;
-    top: 0;
+    top: 64px;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(245, 248, 250, 0.98);
-    backdrop-filter: blur(20px);
+    width: 100%;
+    height: calc(100vh - 64px);
+    background: #f5f8fa;
     flex-direction: column;
     align-items: center;
     justify-content: center;

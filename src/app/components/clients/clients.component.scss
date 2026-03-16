@@ -96,13 +96,14 @@
 
 @media (max-width: 640px) {
   .clients-track {
-    gap: var(--sp-8);
+    gap: var(--sp-10);
     animation-duration: 55s;
   }
 
   .clients-logo {
-    height: 32px;
-    max-width: 100px;
+    height: 48px;
+    max-width: 130px;
+    padding: var(--sp-2) var(--sp-3);
   }
 }
 
