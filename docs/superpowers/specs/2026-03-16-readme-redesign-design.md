@@ -44,14 +44,14 @@ Tabela de scripts do `package.json`:
 |--------------|----------------------|----------------------------------------|
 | `start`      | `ng serve`           | Servidor de desenvolvimento com HMR   |
 | `build`      | `ng build`           | Build de produção em `dist/`           |
-| `watch`      | `ng build --watch`   | Build incremental em modo development  |
+| `watch`      | `ng build --watch --configuration development` | Build incremental em modo development  |
 | `test`       | `ng test`            | Testes unitários com Karma             |
 
 ---
 
 ### 3. Arquitetura de Componentes
 
-Descrição em prosa: SPA com roteamento simples (rota raiz → HomeComponent, wildcard redireciona). HomeComponent atua como compositor — apenas monta as seções na ordem correta. Todos os componentes são Angular standalone (sem NgModules).
+Descrição em prosa: SPA com roteamento simples (rota raiz → HomeComponent, wildcard redireciona). HomeComponent atua como compositor de seções e também renderiza o botão flutuante de WhatsApp (declara `whatsappFloatUrl` a partir de `environment`). Todos os componentes são Angular standalone (sem NgModules).
 
 Árvore de componentes:
 
@@ -59,8 +59,8 @@ Descrição em prosa: SPA com roteamento simples (rota raiz → HomeComponent, w
 AppComponent
 ├── HeaderComponent         # Navbar fixa, blur no scroll, menu mobile responsivo
 └── router-outlet
-    └── HomeComponent       # Compositor de seções (sem lógica própria)
-        ├── HeroComponent         # Hero fullscreen, canvas topográfico + radar SVG
+    └── HomeComponent       # Compositor de seções + botão flutuante de WhatsApp
+        ├── HeroComponent         # Hero fullscreen, dois Canvas 2D (topografia + radar clip circular)
         ├── MetricsComponent      # Strip horizontal com 4 métricas
         ├── ServicesComponent     # Grid de 11 cards de serviços com ícones PNG
         ├── ClientsComponent      # Carrossel automático com 21 logos de clientes
@@ -71,11 +71,11 @@ FooterComponent             # 4 colunas: empresa, serviços, tecnologia, contato
 
 Tabela de componentes:
 
-| Componente          | Arquivo                              | Responsabilidade                                  |
-|---------------------|--------------------------------------|---------------------------------------------------|
-| `AppComponent`      | `src/app/app.component.ts`           | Shell da aplicação, inclui Header e Footer        |
-| `HeaderComponent`   | `src/app/components/header/`         | Navbar fixa com scroll blur e menu mobile         |
-| `HomeComponent`     | `src/app/components/home/`           | Compositor — ordena e monta as seções             |
+| Componente          | Arquivo                              | Responsabilidade                                                        |
+|---------------------|--------------------------------------|-------------------------------------------------------------------------|
+| `AppComponent`      | `src/app/app.component.ts`           | Shell da aplicação, inclui Header e Footer                              |
+| `HeaderComponent`   | `src/app/components/header/`         | Navbar fixa com scroll blur e menu mobile                               |
+| `HomeComponent`     | `src/app/components/home/`           | Compositor de seções + botão flutuante de WhatsApp (`whatsappFloatUrl`) |
 | `HeroComponent`     | `src/app/components/hero/`           | Hero fullscreen com Canvas API e radar            |
 | `MetricsComponent`  | `src/app/components/metrics/`        | Estatísticas da empresa em strip horizontal       |
 | `ServicesComponent` | `src/app/components/services/`       | Grid de serviços com ícones PNG tintados via CSS  |
@@ -119,6 +119,8 @@ Arquivo de produção: `src/environments/environment.prod.ts`
 | `whatsappNumber`   | `string`  | `'5500111222333'`    | Número no formato internacional (55 + DDD + número), sem espaços ou símbolos |
 
 O número é usado por `HeaderComponent`, `HeroComponent`, `CtaComponent` e `HomeComponent` para construir URLs `https://wa.me/{número}?text=...` com mensagens pré-preenchidas distintas por ponto de entrada.
+
+> ⚠️ O arquivo `environment.ts` já contém um número real no repositório. Nunca expor este arquivo publicamente sem substituir o valor por um placeholder. Em deploys públicos, considerar mover o número para uma variável de build ou remover do controle de versão via `.gitignore`.
 
 ---
 
