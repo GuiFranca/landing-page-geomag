@@ -1,3 +1,24 @@
+// ─── Skip link (accessibility) ──────────────────────────────────────────────
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  padding: var(--sp-2) var(--sp-4);
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--r-md);
+  font-weight: 600;
+  text-decoration: none;
+  transition: top var(--dur-fast);
+
+  &:focus {
+    top: var(--sp-2);
+  }
+}
+
 // ─── Navbar layout ──────────────────────────────────────────────────────────
 
 .navbar {
