@@ -40,3 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Superpowers (specs e planos gerados pelo Claude — apenas uso local)
+docs/superpowers/
