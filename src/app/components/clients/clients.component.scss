@@ -2,7 +2,7 @@
   background: var(--gradient-dark-panel);
   color: #e4eff5;
   position: relative;
-  overflow: hidden;
+  overflow: clip;
 
   &::before {
     content: '';
@@ -74,6 +74,30 @@
   }
 }
 
+.clients-tooltip {
+  position: fixed;
+  z-index: 300;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-100%);
+  background: var(--gradient-dark-panel);
+  color: #e4eff5;
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-md);
+  border: 1px solid rgba(74, 128, 164, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity var(--dur-fast) ease;
+
+  &--visible {
+    opacity: 1;
+  }
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -96,13 +120,14 @@
 
 @media (max-width: 640px) {
   .clients-track {
-    gap: var(--sp-8);
+    gap: var(--sp-10);
     animation-duration: 55s;
   }
 
   .clients-logo {
-    height: 32px;
-    max-width: 100px;
+    height: 48px;
+    max-width: 130px;
+    padding: var(--sp-2) var(--sp-3);
   }
 }
 
