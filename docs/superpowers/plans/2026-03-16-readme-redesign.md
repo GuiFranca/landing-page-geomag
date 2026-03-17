@@ -1,3 +1,31 @@
+# README Redesign Implementation Plan
+
+> **For agentic workers:** REQUIRED: Use superpowers:subagent-driven-development (if subagents available) or superpowers:executing-plans to implement this plan. Steps use checkbox (`- [ ]`) syntax for tracking.
+
+**Goal:** Substituir o boilerplate genérico do Angular CLI no `README.md` por documentação útil voltada ao desenvolvedor, cobrindo visão geral, arquitetura, design system, variáveis de ambiente e decisões técnicas.
+
+**Architecture:** Substituição completa do arquivo `README.md` na raiz do repositório. Não há lógica de aplicação envolvida — apenas conteúdo Markdown. Não se aplica TDD.
+
+**Tech Stack:** Markdown (GitHub Flavored), PT-BR
+
+**Spec:** `docs/superpowers/specs/2026-03-16-readme-redesign-design.md`
+
+---
+
+## Chunk 1: Escrever o README completo
+
+### Task 1: Substituir o README.md
+
+**Files:**
+- Modify: `README.md` (raiz do repositório) — substituição completa do conteúdo
+
+---
+
+- [ ] **Step 1: Substituir o conteúdo do README.md**
+
+Substituir o arquivo inteiro pelo conteúdo abaixo:
+
+```markdown
 # GeoMAG — Landing Page
 
 > Landing page institucional da **GeoMAG Topografia & Projetos**, empresa de topografia e georreferenciamento do interior de SP.
@@ -52,19 +80,19 @@ FooterComponent             # 4 colunas: empresa, serviços, tecnologia, contato
 
 ### Componentes
 
-| Componente           | Arquivo                                  | Responsabilidade                                                         |
-|----------------------|------------------------------------------|--------------------------------------------------------------------------|
-| `AppComponent`       | `src/app/app.component.ts`               | Shell da aplicação, inclui Header e Footer                               |
-| `HeaderComponent`    | `src/app/components/header/`             | Navbar fixa com scroll blur e menu mobile                                |
-| `HomeComponent`      | `src/app/components/home/`               | Compositor de seções + botão flutuante de WhatsApp (`whatsappFloatUrl`)  |
-| `HeroComponent`      | `src/app/components/hero/`               | Hero fullscreen com Canvas API e radar (dois `<canvas>`, seed fixo `42`) |
-| `MetricsComponent`   | `src/app/components/metrics/`            | Estatísticas da empresa em strip horizontal                              |
-| `ServicesComponent`  | `src/app/components/services/`           | Grid de serviços com ícones PNG tintados via filtro CSS                  |
-| `ClientsComponent`   | `src/app/components/clients/`            | Carrossel automático de logos de clientes                                |
-| `TechPanelComponent` | `src/app/components/tech-panel/`         | Painel escuro de tecnologias com SVG inline                              |
-| `CtaComponent`       | `src/app/components/cta/`                | CTA final com botões WhatsApp e e-mail                                   |
-| `FooterComponent`    | `src/app/components/footer/`             | Rodapé expandido em 4 colunas                                            |
-| `RevealDirective`    | `src/app/directives/reveal.directive.ts` | Animação de entrada por IntersectionObserver                             |
+| Componente           | Arquivo                                   | Responsabilidade                                                         |
+|----------------------|-------------------------------------------|--------------------------------------------------------------------------|
+| `AppComponent`       | `src/app/app.component.ts`                | Shell da aplicação, inclui Header e Footer                               |
+| `HeaderComponent`    | `src/app/components/header/`              | Navbar fixa com scroll blur e menu mobile                                |
+| `HomeComponent`      | `src/app/components/home/`                | Compositor de seções + botão flutuante de WhatsApp (`whatsappFloatUrl`)  |
+| `HeroComponent`      | `src/app/components/hero/`                | Hero fullscreen com Canvas API e radar (dois `<canvas>`, seed fixo `42`) |
+| `MetricsComponent`   | `src/app/components/metrics/`             | Estatísticas da empresa em strip horizontal                              |
+| `ServicesComponent`  | `src/app/components/services/`            | Grid de serviços com ícones PNG tintados via filtro CSS                  |
+| `ClientsComponent`   | `src/app/components/clients/`             | Carrossel automático de logos de clientes                                |
+| `TechPanelComponent` | `src/app/components/tech-panel/`          | Painel escuro de tecnologias com SVG inline                              |
+| `CtaComponent`       | `src/app/components/cta/`                 | CTA final com botões WhatsApp e e-mail                                   |
+| `FooterComponent`    | `src/app/components/footer/`              | Rodapé expandido em 4 colunas                                            |
+| `RevealDirective`    | `src/app/directives/reveal.directive.ts`  | Animação de entrada por IntersectionObserver                             |
 
 ---
 
@@ -94,15 +122,15 @@ Aparência visual específica de cada componente, consumindo os tokens da Camada
 
 ## Variáveis de Ambiente
 
-| Arquivo                                | Uso                    |
-|----------------------------------------|------------------------|
-| `src/environments/environment.ts`      | Desenvolvimento local  |
-| `src/environments/environment.prod.ts` | Build de produção      |
+| Arquivo                                  | Uso                      |
+|------------------------------------------|--------------------------|
+| `src/environments/environment.ts`        | Desenvolvimento local    |
+| `src/environments/environment.prod.ts`   | Build de produção        |
 
-| Variável         | Tipo      | Exemplo           | Descrição                                                                    |
-|------------------|-----------|-------------------|------------------------------------------------------------------------------|
-| `production`     | `boolean` | `false`           | `true` apenas no build de produção                                           |
-| `whatsappNumber` | `string`  | `'5500111222333'` | Número no formato internacional (55 + DDD + número), sem espaços ou símbolos |
+| Variável         | Tipo      | Exemplo              | Descrição                                                                 |
+|------------------|-----------|----------------------|---------------------------------------------------------------------------|
+| `production`     | `boolean` | `false`              | `true` apenas no build de produção                                        |
+| `whatsappNumber` | `string`  | `'5500111222333'`    | Número no formato internacional (55 + DDD + número), sem espaços ou símbolos |
 
 O número é usado por `HeaderComponent`, `HeroComponent`, `CtaComponent` e `HomeComponent` para construir URLs `https://wa.me/{número}?text=...` com mensagens pré-preenchidas distintas por ponto de entrada.
 
@@ -126,3 +154,29 @@ Sem formulário com processamento no backend. Todo CTA aponta para `wa.me` com m
 
 **Dados hardcoded por componente**
 Página estática sem CMS ou serviço de dados. Cada componente é dono dos seus dados (serviços, métricas, tecnologias, logos de clientes). Para atualizar qualquer conteúdo, editar diretamente o array no `.ts` do componente correspondente.
+```
+
+- [ ] **Step 2: Verificar renderização do Markdown**
+
+Abrir o arquivo no editor ou visualizador de Markdown e confirmar:
+- Badges renderizam corretamente na linha de tecnologias
+- Bloco de código `bash` do setup está dentro de um bloco de código separado (não aninhado)
+- Tabelas estão alinhadas e renderizam sem erros
+- Árvore de componentes está em bloco de código com espaçamento correto
+- Aviso `> ⚠️` renderiza como blockquote
+
+- [ ] **Step 3: Commit**
+
+```bash
+git add README.md
+git commit -m "docs: rewrite README with project-specific documentation"
+```
+```
+
+---
+
+## Notas de implementação
+
+- O bloco de código `bash` dentro da seção "Instalação e Desenvolvimento" usa três backticks. No arquivo Markdown final, esses backticks NÃO devem estar dentro de outro bloco de código — o plan usa formatação de exibição. Escrever o conteúdo diretamente no arquivo.
+- Não há testes a escrever — README é documentação estática.
+- Não alterar nenhum arquivo de código da aplicação.
