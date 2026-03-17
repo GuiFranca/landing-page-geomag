@@ -14,7 +14,7 @@ import { FooterComponent } from './components/footer/footer.component';
     </main>
     <app-footer></app-footer>
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {
   title = 'GeoMAG';

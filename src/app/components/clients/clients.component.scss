@@ -65,8 +65,9 @@
   padding: var(--sp-3);
   background: rgba(255, 255, 255, 0.92);
   border-radius: var(--r-lg);
-  transition: transform var(--dur-medium) ease,
-              box-shadow var(--dur-medium) ease;
+  transition:
+    transform var(--dur-medium) ease,
+    box-shadow var(--dur-medium) ease;
 
   &:hover {
     transform: scale(1.08);

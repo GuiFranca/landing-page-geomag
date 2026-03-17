@@ -20,9 +20,10 @@
   padding: var(--sp-8);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  transition: border-color var(--dur-medium),
-              transform var(--dur-medium) var(--ease-spring),
-              box-shadow var(--dur-medium);
+  transition:
+    border-color var(--dur-medium),
+    transform var(--dur-medium) var(--ease-spring),
+    box-shadow var(--dur-medium);
 
   &::before {
     content: '';
@@ -69,7 +70,9 @@
   align-items: center;
   justify-content: center;
   margin-bottom: var(--sp-6);
-  transition: background var(--dur-medium), box-shadow var(--dur-medium);
+  transition:
+    background var(--dur-medium),
+    box-shadow var(--dur-medium);
 
   img {
     width: 28px;

@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule],
 })
 export class HeaderComponent {
   isScrolled = false;

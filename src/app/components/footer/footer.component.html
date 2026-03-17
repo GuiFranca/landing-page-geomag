@@ -1,19 +1,21 @@
 <footer class="footer">
   <div class="container">
-
     <!-- Desktop / Tablet footer grid -->
     <div class="footer__grid">
       <!-- Brand Column -->
       <div>
         <div class="footer__logo">
-          <img src="assets/images/logo-nova/logo-horizontal-subtitulo.png" alt="GeoMAG Topografia e Projetos">
+          <img
+            src="assets/images/logo-nova/logo-horizontal-subtitulo.png"
+            alt="GeoMAG Topografia e Projetos"
+          />
         </div>
         <p class="footer__desc">
-          Topografia e projetos de alta precisão geoespacial para
-          infraestrutura, construção civil e planejamento territorial.
+          Topografia e projetos de alta precisão geoespacial para infraestrutura, construção civil e
+          planejamento territorial.
         </p>
         <div class="footer__cert">
-          CREA-SP Registrado<br>
+          CREA-SP Registrado<br />
           Capivari · SP · Brasil
         </div>
       </div>
@@ -46,7 +48,9 @@
             <a href="mailto:contato@geomag.live">contato&#64;geomag.live</a>
           </li>
           <li>
-            <a href="https://wa.me/5519981837219" target="_blank" rel="noopener noreferrer">(19) 98183-7219</a>
+            <a href="https://wa.me/5519981837219" target="_blank" rel="noopener noreferrer"
+              >(19) 98183-7219</a
+            >
           </li>
           <li *ngFor="let link of companyLinks">
             <a [href]="link.href">{{ link.label }}</a>
@@ -61,24 +65,30 @@
     </div>
 
     <div class="footer__bottom">
-      <span class="footer__copy">© {{ currentYear }} GeoMAG Topografia e Projetos · Todos os direitos reservados</span>
+      <span class="footer__copy"
+        >© {{ currentYear }} GeoMAG Topografia e Projetos · Todos os direitos reservados</span
+      >
       <span class="footer__tagline">Design System v2.0</span>
     </div>
 
     <!-- Mobile-only compact footer -->
     <div class="footer__mobile">
       <div class="footer__logo">
-        <img src="assets/images/logo-nova/logo-horizontal-subtitulo.png" alt="GeoMAG Topografia e Projetos">
+        <img
+          src="assets/images/logo-nova/logo-horizontal-subtitulo.png"
+          alt="GeoMAG Topografia e Projetos"
+        />
       </div>
 
       <div class="footer__mobile-links">
-        <a href="https://wa.me/5519981837219" target="_blank" rel="noopener noreferrer">(19) 98183-7219</a>
+        <a href="https://wa.me/5519981837219" target="_blank" rel="noopener noreferrer"
+          >(19) 98183-7219</a
+        >
         <a href="mailto:contato@geomag.live">contato&#64;geomag.live</a>
         <a [href]="mapsUrl" target="_blank" rel="noopener noreferrer">Capivari, SP · Brasil</a>
       </div>
 
       <span class="footer__copy">© {{ currentYear }} GeoMAG · Todos os direitos reservados</span>
     </div>
-
   </div>
 </footer>

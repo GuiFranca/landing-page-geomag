@@ -12,7 +12,7 @@ interface Client {
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.scss'],
   standalone: true,
-  imports: [CommonModule, RevealDirective]
+  imports: [CommonModule, RevealDirective],
 })
 export class ClientsComponent {
   tooltipText = '';

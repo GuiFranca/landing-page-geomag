@@ -12,8 +12,9 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
-  transition: transform var(--dur-fast) var(--ease-spring),
-              box-shadow var(--dur-medium);
+  transition:
+    transform var(--dur-fast) var(--ease-spring),
+    box-shadow var(--dur-medium);
   animation: glowPulse 3s ease-in-out infinite;
 
   svg {

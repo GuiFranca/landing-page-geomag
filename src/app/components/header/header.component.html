@@ -3,7 +3,10 @@
   <div class="container">
     <div class="navbar__inner">
       <a href="#inicio" class="navbar__logo">
-        <img src="assets/images/logo-nova/logo-horizontal-subtitulo.png" alt="GeoMAG Topografia e Projetos">
+        <img
+          src="assets/images/logo-nova/logo-horizontal-subtitulo.png"
+          alt="GeoMAG Topografia e Projetos"
+        />
       </a>
 
       <ul class="navbar__nav" [class.navbar__nav--open]="isMenuOpen">
@@ -13,17 +16,23 @@
       </ul>
 
       <div class="navbar__actions">
-        <a [href]="whatsappUrl" target="_blank" rel="noopener noreferrer"
-           class="btn btn--primary btn--sm">
+        <a
+          [href]="whatsappUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn--primary btn--sm"
+        >
           Solicitar Orçamento
         </a>
       </div>
 
-      <button class="navbar__hamburger"
-              [class.navbar__hamburger--active]="isMenuOpen"
-              (click)="toggleMenu()"
-              [attr.aria-expanded]="isMenuOpen"
-              aria-label="Menu de navegação">
+      <button
+        class="navbar__hamburger"
+        [class.navbar__hamburger--active]="isMenuOpen"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="isMenuOpen"
+        aria-label="Menu de navegação"
+      >
         <span></span><span></span><span></span>
       </button>
     </div>

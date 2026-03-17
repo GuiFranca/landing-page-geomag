@@ -19,7 +19,7 @@ import { environment } from '../../../environments/environment';
     ClientsComponent,
     TechPanelComponent,
     CtaComponent,
-  ]
+  ],
 })
 export class HomeComponent {
   whatsappFloatUrl = `https://wa.me/${environment.whatsappNumber}?text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20com%20topografia.`;

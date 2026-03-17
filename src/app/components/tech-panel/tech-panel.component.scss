@@ -50,9 +50,10 @@
   border: 1px solid rgba(74, 128, 164, 0.15);
   border-radius: var(--r-xl);
   background: rgba(255, 255, 255, 0.03);
-  transition: border-color var(--dur-medium),
-              transform var(--dur-medium) var(--ease-spring),
-              background var(--dur-medium);
+  transition:
+    border-color var(--dur-medium),
+    transform var(--dur-medium) var(--ease-spring),
+    background var(--dur-medium);
 
   &:hover {
     border-color: rgba(74, 128, 164, 0.4);

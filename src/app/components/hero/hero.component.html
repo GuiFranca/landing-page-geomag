@@ -1,7 +1,12 @@
 <section class="hero" id="inicio" aria-labelledby="hero-headline">
   <!-- Background layers -->
   <div class="hero__bg">
-    <canvas #topoCanvas class="hero__topo-canvas" role="img" aria-label="Visualização topográfica decorativa"></canvas>
+    <canvas
+      #topoCanvas
+      class="hero__topo-canvas"
+      role="img"
+      aria-label="Visualização topográfica decorativa"
+    ></canvas>
     <div class="hero__grid"></div>
     <div class="hero__dots"></div>
     <div class="hero__scanline"></div>
@@ -22,27 +27,36 @@
         Precisão Geoespacial
       </div>
       <h1 class="hero__headline" id="hero-headline">
-        <em>Topografia</em> e Projetos<br>
+        <em>Topografia</em> e Projetos<br />
         com Precisão Absoluta
       </h1>
       <p class="hero__sub">
-        Levantamentos topográficos, georreferenciamento e mapeamento 3D
-        com tecnologia de ponta para projetos de infraestrutura, construção civil e agronegócio.
+        Levantamentos topográficos, georreferenciamento e mapeamento 3D com tecnologia de ponta para
+        projetos de infraestrutura, construção civil e agronegócio.
       </p>
       <div class="hero__actions">
-        <a [href]="whatsappUrl" target="_blank" rel="noopener noreferrer"
-           class="btn btn--primary btn--lg">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <a
+          [href]="whatsappUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn--primary btn--lg"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
           Solicitar Orçamento
         </a>
         <a href="#servicos" class="btn btn--outline btn--lg">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3" /></svg>
           Nossos Serviços
         </a>
       </div>
       <div class="hero__stats">
         <div class="hero__stat" *ngFor="let stat of stats">
-          <div class="hero__stat-val">{{ stat.value }}<span>{{ stat.suffix }}</span></div>
+          <div class="hero__stat-val">
+            {{ stat.value }}<span>{{ stat.suffix }}</span>
+          </div>
           <div class="hero__stat-lbl">{{ stat.label }}</div>
         </div>
       </div>
@@ -51,7 +65,12 @@
     <!-- Right column: Radar visualization -->
     <div class="hero__visual">
       <div class="viz-wrap">
-        <canvas #vizCanvas class="hero__viz-canvas" role="img" aria-label="Radar decorativo"></canvas>
+        <canvas
+          #vizCanvas
+          class="hero__viz-canvas"
+          role="img"
+          aria-label="Radar decorativo"
+        ></canvas>
         <div class="vring vring-a"></div>
         <div class="vring vring-b"></div>
         <div class="vring vring-c"></div>
@@ -63,8 +82,12 @@
         </div>
         <div class="vcenter">
           <div class="vcenter-ring">
-            <img src="assets/images/logo-nova/globo.png" alt="GeoMAG">
-            <div class="vcoords">-23.0058° S<br>-47.5072° O<br><span style="color:var(--brand-400)">ALT 520m</span></div>
+            <img src="assets/images/logo-nova/globo.png" alt="GeoMAG" />
+            <div class="vcoords">
+              -23.0058° S<br />-47.5072° O<br /><span style="color: var(--brand-400)"
+                >ALT 520m</span
+              >
+            </div>
           </div>
         </div>
         <div class="vping vping-1" aria-hidden="true">

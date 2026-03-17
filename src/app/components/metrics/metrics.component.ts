@@ -7,7 +7,7 @@ import { RevealDirective } from '../../directives/reveal.directive';
   templateUrl: './metrics.component.html',
   styleUrls: ['./metrics.component.scss'],
   standalone: true,
-  imports: [CommonModule, RevealDirective]
+  imports: [CommonModule, RevealDirective],
 })
 export class MetricsComponent {
   metrics = [

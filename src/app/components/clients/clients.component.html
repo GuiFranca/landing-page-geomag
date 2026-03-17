@@ -12,28 +12,34 @@
 
     <div class="clients-marquee" appReveal [revealDelay]="0.2">
       <div class="clients-track">
-        <img *ngFor="let c of clients"
-             [src]="c.logo"
-             [alt]="c.name"
-             class="clients-logo"
-             loading="lazy"
-             (mouseenter)="showTooltip($event, c.name)"
-             (mouseleave)="hideTooltip()">
-        <img *ngFor="let c of clients"
-             [src]="c.logo"
-             [alt]="c.name"
-             class="clients-logo"
-             loading="lazy"
-             aria-hidden="true"
-             (mouseenter)="showTooltip($event, c.name)"
-             (mouseleave)="hideTooltip()">
+        <img
+          *ngFor="let c of clients"
+          [src]="c.logo"
+          [alt]="c.name"
+          class="clients-logo"
+          loading="lazy"
+          (mouseenter)="showTooltip($event, c.name)"
+          (mouseleave)="hideTooltip()"
+        />
+        <img
+          *ngFor="let c of clients"
+          [src]="c.logo"
+          [alt]="c.name"
+          class="clients-logo"
+          loading="lazy"
+          aria-hidden="true"
+          (mouseenter)="showTooltip($event, c.name)"
+          (mouseleave)="hideTooltip()"
+        />
       </div>
     </div>
 
-    <div class="clients-tooltip"
-         [class.clients-tooltip--visible]="tooltipVisible"
-         [style.left.px]="tooltipX"
-         [style.top.px]="tooltipY">
+    <div
+      class="clients-tooltip"
+      [class.clients-tooltip--visible]="tooltipVisible"
+      [style.left.px]="tooltipX"
+      [style.top.px]="tooltipY"
+    >
       {{ tooltipText }}
     </div>
   </div>
