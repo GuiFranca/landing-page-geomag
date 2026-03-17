@@ -50,9 +50,6 @@
   gap: var(--sp-16);
   width: max-content;
   animation: marquee 45s linear infinite;
-  will-change: transform;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 
   &:hover {
     animation-play-state: paused;
@@ -79,10 +76,10 @@
 
 @keyframes marquee {
   from {
-    transform: translate3d(0, 0, 0);
+    transform: translateX(0);
   }
   to {
-    transform: translate3d(-50%, 0, 0);
+    transform: translateX(-50%);
   }
 }
 
