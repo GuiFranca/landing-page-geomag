@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.scss'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule],
 })
 export class HeroComponent implements AfterViewInit, OnDestroy {
   @ViewChild('topoCanvas', { static: false }) topoCanvasRef!: ElementRef<HTMLCanvasElement>;
@@ -30,7 +30,9 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
     this.seed = (this.seed * 16807 + 0) % 2147483647;
     return (this.seed - 1) / 2147483646;
   }
-  private resetSeed(): void { this.seed = 42; }
+  private resetSeed(): void {
+    this.seed = 42;
+  }
 
   ngAfterViewInit(): void {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -65,7 +67,13 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
 
     if (circular) {
       ctx.beginPath();
-      ctx.arc(canvas.width / 2, canvas.height / 2, Math.min(canvas.width, canvas.height) / 2, 0, Math.PI * 2);
+      ctx.arc(
+        canvas.width / 2,
+        canvas.height / 2,
+        Math.min(canvas.width, canvas.height) / 2,
+        0,
+        Math.PI * 2,
+      );
       ctx.clip();
     }
 

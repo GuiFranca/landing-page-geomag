@@ -6,14 +6,18 @@
         Equipamentos de <span class="gradient-text">Ponta</span>
       </h2>
       <p class="s-desc">
-        Utilizamos as tecnologias mais avançadas do mercado para garantir
-        máxima precisão e eficiência em cada projeto.
+        Utilizamos as tecnologias mais avançadas do mercado para garantir máxima precisão e
+        eficiência em cada projeto.
       </p>
     </div>
 
     <div class="tech-grid">
-      <div class="tech-item" *ngFor="let t of technologies; let i = index"
-           appReveal [revealDelay]="(i + 1) * 0.1">
+      <div
+        class="tech-item"
+        *ngFor="let t of technologies; let i = index"
+        appReveal
+        [revealDelay]="(i + 1) * 0.1"
+      >
         <div class="tech-item__icon" aria-hidden="true">
           <img [src]="t.icon" [alt]="t.name" />
         </div>

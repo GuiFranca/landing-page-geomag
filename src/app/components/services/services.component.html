@@ -7,17 +7,21 @@
         Soluções em <span class="gradient-text">Topografia</span>
       </h2>
       <p class="s-desc">
-        Oferecemos uma gama completa de serviços topográficos com
-        equipamentos de última geração e equipe altamente qualificada.
+        Oferecemos uma gama completa de serviços topográficos com equipamentos de última geração e
+        equipe altamente qualificada.
       </p>
     </div>
 
     <div class="features-grid">
-      <div class="feat-card" *ngFor="let s of services; let i = index"
-           appReveal [revealDelay]="(i + 1) * 0.1">
+      <div
+        class="feat-card"
+        *ngFor="let s of services; let i = index"
+        appReveal
+        [revealDelay]="(i + 1) * 0.1"
+      >
         <span class="feat-card__num">{{ s.num }}</span>
         <div class="feat-card__icon">
-          <img [src]="s.icon" [alt]="s.title">
+          <img [src]="s.icon" [alt]="s.title" />
         </div>
         <h3 class="feat-card__title">{{ s.title }}</h3>
         <p class="feat-card__desc">{{ s.description }}</p>

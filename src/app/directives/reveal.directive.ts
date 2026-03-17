@@ -2,7 +2,7 @@ import { Directive, ElementRef, Input, AfterViewInit, OnDestroy } from '@angular
 
 @Directive({
   selector: '[appReveal]',
-  standalone: true
+  standalone: true,
 })
 export class RevealDirective implements AfterViewInit, OnDestroy {
   @Input() revealDelay = 0;
@@ -33,7 +33,7 @@ export class RevealDirective implements AfterViewInit, OnDestroy {
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.15 },
     );
 
     this.observer.observe(this.el.nativeElement);

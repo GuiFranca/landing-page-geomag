@@ -4,7 +4,5 @@ import { provideRouter, withHashLocation } from '@angular/router';
 import { routes } from './app/app.routes';
 
 bootstrapApplication(AppComponent, {
-  providers: [
-    provideRouter(routes, withHashLocation())
-  ]
-}).catch(err => console.error(err));
+  providers: [provideRouter(routes, withHashLocation())],
+}).catch((err) => console.error(err));

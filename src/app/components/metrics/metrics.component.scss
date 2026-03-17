@@ -26,9 +26,10 @@
   background: var(--color-bg-base);
   border: 1.5px solid var(--color-border);
   border-radius: var(--r-xl);
-  transition: border-color var(--dur-medium),
-              transform var(--dur-medium) var(--ease-spring),
-              box-shadow var(--dur-medium);
+  transition:
+    border-color var(--dur-medium),
+    transform var(--dur-medium) var(--ease-spring),
+    box-shadow var(--dur-medium);
 
   &:hover {
     border-color: var(--brand-400);
