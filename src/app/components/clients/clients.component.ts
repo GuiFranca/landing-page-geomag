@@ -15,6 +15,11 @@ interface Client {
   imports: [CommonModule, RevealDirective]
 })
 export class ClientsComponent {
+  tooltipText = '';
+  tooltipX = 0;
+  tooltipY = 0;
+  tooltipVisible = false;
+
   clients: Client[] = [
     { name: 'Armelin', logo: 'assets/images/clientes/armelin.png' },
     { name: 'Azul Empreendimentos', logo: 'assets/images/clientes/azul.png' },
@@ -38,4 +43,17 @@ export class ClientsComponent {
     { name: 'Zorzi', logo: 'assets/images/clientes/zorzi.webp' },
     { name: 'Zuin Empreendimentos', logo: 'assets/images/clientes/zuin.png' },
   ];
+
+  showTooltip(event: MouseEvent, name: string): void {
+    const el = event.target as HTMLElement;
+    const rect = el.getBoundingClientRect();
+    this.tooltipText = name;
+    this.tooltipX = rect.left + rect.width / 2;
+    this.tooltipY = rect.top - 8;
+    this.tooltipVisible = true;
+  }
+
+  hideTooltip(): void {
+    this.tooltipVisible = false;
+  }
 }
