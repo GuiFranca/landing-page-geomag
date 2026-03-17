@@ -57,9 +57,9 @@
 }
 
 .clients-logo {
-  height: 52px;
+  height: 72px;
   width: auto;
-  max-width: 150px;
+  max-width: 180px;
   object-fit: contain;
   flex-shrink: 0;
   padding: var(--sp-3);
@@ -113,8 +113,8 @@
   }
 
   .clients-logo {
-    height: 40px;
-    max-width: 120px;
+    height: 56px;
+    max-width: 150px;
   }
 }
 
@@ -125,8 +125,8 @@
   }
 
   .clients-logo {
-    height: 48px;
-    max-width: 130px;
+    height: 56px;
+    max-width: 140px;
     padding: var(--sp-2) var(--sp-3);
   }
 }
