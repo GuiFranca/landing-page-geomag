@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RevealDirective } from '../../directives/reveal.directive';
 
 @Component({
@@ -7,7 +7,7 @@ import { RevealDirective } from '../../directives/reveal.directive';
   templateUrl: './tech-panel.component.html',
   styleUrls: ['./tech-panel.component.scss'],
   standalone: true,
-  imports: [CommonModule, RevealDirective],
+  imports: [RevealDirective],
 })
 export class TechPanelComponent {
   technologies = [

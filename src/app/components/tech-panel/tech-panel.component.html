@@ -12,18 +12,15 @@
     </div>
 
     <div class="tech-grid">
-      <div
-        class="tech-item"
-        *ngFor="let t of technologies; let i = index"
-        appReveal
-        [revealDelay]="(i + 1) * 0.1"
-      >
-        <div class="tech-item__icon" aria-hidden="true">
-          <img [src]="t.icon" [alt]="t.name" />
+      @for (t of technologies; track t; let i = $index) {
+        <div class="tech-item" appReveal [revealDelay]="(i + 1) * 0.1">
+          <div class="tech-item__icon" aria-hidden="true">
+            <img [src]="t.icon" [alt]="t.name" />
+          </div>
+          <h3 class="tech-item__name">{{ t.name }}</h3>
+          <p class="tech-item__desc">{{ t.description }}</p>
         </div>
-        <h3 class="tech-item__name">{{ t.name }}</h3>
-        <p class="tech-item__desc">{{ t.description }}</p>
-      </div>
+      }
     </div>
   </div>
 </section>

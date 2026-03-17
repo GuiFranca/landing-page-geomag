@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, AfterViewInit, OnDestroy } from '@angular/core';
+import { Directive, ElementRef, Input, AfterViewInit, OnDestroy, inject } from '@angular/core';
 
 @Directive({
   selector: '[appReveal]',
@@ -7,9 +7,8 @@ import { Directive, ElementRef, Input, AfterViewInit, OnDestroy } from '@angular
 export class RevealDirective implements AfterViewInit, OnDestroy {
   @Input() revealDelay = 0;
 
+  private el = inject<ElementRef<HTMLElement>>(ElementRef);
   private observer?: IntersectionObserver;
-
-  constructor(private el: ElementRef<HTMLElement>) {}
 
   ngAfterViewInit(): void {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

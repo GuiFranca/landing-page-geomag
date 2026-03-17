@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
 })
 export class HeaderComponent {
   isScrolled = false;

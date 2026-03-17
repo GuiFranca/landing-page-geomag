@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RevealDirective } from '../../directives/reveal.directive';
 
 interface Service {
@@ -15,7 +15,7 @@ interface Service {
   templateUrl: './services.component.html',
   styleUrls: ['./services.component.scss'],
   standalone: true,
-  imports: [CommonModule, RevealDirective],
+  imports: [RevealDirective],
 })
 export class ServicesComponent {
   services: Service[] = [

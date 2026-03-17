@@ -53,12 +53,14 @@
         </a>
       </div>
       <div class="hero__stats">
-        <div class="hero__stat" *ngFor="let stat of stats">
-          <div class="hero__stat-val">
-            {{ stat.value }}<span>{{ stat.suffix }}</span>
+        @for (stat of stats; track stat) {
+          <div class="hero__stat">
+            <div class="hero__stat-val">
+              {{ stat.value }}<span>{{ stat.suffix }}</span>
+            </div>
+            <div class="hero__stat-lbl">{{ stat.label }}</div>
           </div>
-          <div class="hero__stat-lbl">{{ stat.label }}</div>
-        </div>
+        }
       </div>
     </div>
 
