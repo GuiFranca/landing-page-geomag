@@ -1,5 +1,7 @@
 <footer class="footer">
   <div class="container">
+
+    <!-- Desktop / Tablet footer grid -->
     <div class="footer__grid">
       <!-- Brand Column -->
       <div>
@@ -36,7 +38,7 @@
         </ul>
       </div>
 
-      <!-- Company Column -->
+      <!-- Contact Column -->
       <div>
         <div class="footer__col-ttl">Contato</div>
         <ul class="footer__links">
@@ -49,6 +51,11 @@
           <li *ngFor="let link of companyLinks">
             <a [href]="link.href">{{ link.label }}</a>
           </li>
+          <li>
+            <a [href]="mapsUrl" target="_blank" rel="noopener noreferrer" class="footer__address">
+              Capivari, SP · Brasil
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -57,5 +64,21 @@
       <span class="footer__copy">© {{ currentYear }} GeoMAG Topografia e Projetos · Todos os direitos reservados</span>
       <span class="footer__tagline">Design System v2.0</span>
     </div>
+
+    <!-- Mobile-only compact footer -->
+    <div class="footer__mobile">
+      <div class="footer__logo">
+        <img src="assets/images/logo-nova/logo-horizontal-subtitulo.png" alt="GeoMAG Topografia e Projetos">
+      </div>
+
+      <div class="footer__mobile-links">
+        <a href="https://wa.me/5519981837219" target="_blank" rel="noopener noreferrer">(19) 98183-7219</a>
+        <a href="mailto:contato@geomag.com.br">contato&#64;geomag.com.br</a>
+        <a [href]="mapsUrl" target="_blank" rel="noopener noreferrer">Capivari, SP · Brasil</a>
+      </div>
+
+      <span class="footer__copy">© {{ currentYear }} GeoMAG · Todos os direitos reservados</span>
+    </div>
+
   </div>
 </footer>
