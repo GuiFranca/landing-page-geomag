@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.scss'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
 })
 export class HeroComponent implements AfterViewInit, OnDestroy {
   @ViewChild('topoCanvas', { static: false }) topoCanvasRef!: ElementRef<HTMLCanvasElement>;

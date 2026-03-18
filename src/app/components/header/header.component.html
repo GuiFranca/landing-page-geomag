@@ -10,9 +10,11 @@
       </a>
 
       <ul class="navbar__nav" [class.navbar__nav--open]="isMenuOpen">
-        <li *ngFor="let link of navLinks">
-          <a [href]="link.href" (click)="closeMenu()">{{ link.label }}</a>
-        </li>
+        @for (link of navLinks; track link) {
+          <li>
+            <a [href]="link.href" (click)="closeMenu()">{{ link.label }}</a>
+          </li>
+        }
       </ul>
 
       <div class="navbar__actions">

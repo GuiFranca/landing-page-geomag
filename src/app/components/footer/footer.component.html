@@ -24,9 +24,11 @@
       <div>
         <div class="footer__col-ttl">Serviços</div>
         <ul class="footer__links">
-          <li *ngFor="let link of serviceLinks">
-            <a [href]="link.href">{{ link.label }}</a>
-          </li>
+          @for (link of serviceLinks; track link) {
+            <li>
+              <a [href]="link.href">{{ link.label }}</a>
+            </li>
+          }
         </ul>
       </div>
 
@@ -34,9 +36,11 @@
       <div>
         <div class="footer__col-ttl">Tecnologia</div>
         <ul class="footer__links">
-          <li *ngFor="let link of techLinks">
-            <a [href]="link.href">{{ link.label }}</a>
-          </li>
+          @for (link of techLinks; track link) {
+            <li>
+              <a [href]="link.href">{{ link.label }}</a>
+            </li>
+          }
         </ul>
       </div>
 
@@ -52,9 +56,11 @@
               >(19) 98183-7219</a
             >
           </li>
-          <li *ngFor="let link of companyLinks">
-            <a [href]="link.href">{{ link.label }}</a>
-          </li>
+          @for (link of companyLinks; track link) {
+            <li>
+              <a [href]="link.href">{{ link.label }}</a>
+            </li>
+          }
           <li>
             <a [href]="mapsUrl" target="_blank" rel="noopener noreferrer" class="footer__address">
               Capivari, SP · Brasil
