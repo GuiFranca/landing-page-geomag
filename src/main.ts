@@ -1,8 +1,6 @@
-import { provideZoneChangeDetection } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
-import { provideRouter } from '@angular/router';
-import { routes } from './app/app.routes';
+import { appConfig } from './app/app.config';
 
 import { inject } from '@vercel/analytics';
 import { injectSpeedInsights } from '@vercel/speed-insights';
@@ -11,6 +9,4 @@ import { injectSpeedInsights } from '@vercel/speed-insights';
 inject();
 injectSpeedInsights();
 
-bootstrapApplication(AppComponent, {
-  providers: [provideZoneChangeDetection(), provideRouter(routes)],
-}).catch((err) => console.error(err));
+bootstrapApplication(AppComponent, appConfig).catch((err) => console.error(err));
