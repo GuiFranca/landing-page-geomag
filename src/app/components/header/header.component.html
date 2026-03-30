@@ -1,5 +1,5 @@
 <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
-<header class="navbar" [class.scrolled]="isScrolled">
+<header class="navbar" [class.scrolled]="isScrolled()">
   <div class="container">
     <div class="navbar__inner">
       <a href="#inicio" class="navbar__logo">
@@ -9,7 +9,7 @@
         />
       </a>
 
-      <ul class="navbar__nav" [class.navbar__nav--open]="isMenuOpen">
+      <ul class="navbar__nav" [class.navbar__nav--open]="isMenuOpen()">
         @for (link of navLinks; track link) {
           <li>
             <a [href]="link.href" (click)="closeMenu()">{{ link.label }}</a>
@@ -30,9 +30,9 @@
 
       <button
         class="navbar__hamburger"
-        [class.navbar__hamburger--active]="isMenuOpen"
+        [class.navbar__hamburger--active]="isMenuOpen()"
         (click)="toggleMenu()"
-        [attr.aria-expanded]="isMenuOpen"
+        [attr.aria-expanded]="isMenuOpen()"
         aria-label="Menu de navegação"
       >
         <span></span><span></span><span></span>

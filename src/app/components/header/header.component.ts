@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, signal } from '@angular/core';
 
 import { environment } from '../../../environments/environment';
 
@@ -10,8 +10,8 @@ import { environment } from '../../../environments/environment';
   imports: [],
 })
 export class HeaderComponent {
-  isScrolled = false;
-  isMenuOpen = false;
+  isScrolled = signal(false);
+  isMenuOpen = signal(false);
   whatsappUrl = `https://wa.me/${environment.whatsappNumber}?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20servi%C3%A7os%20de%20topografia.`;
 
   navLinks = [
@@ -23,7 +23,7 @@ export class HeaderComponent {
 
   @HostListener('window:scroll')
   onScroll(): void {
-    this.isScrolled = window.scrollY > 50;
+    this.isScrolled.set(window.scrollY > 50);
   }
 
   @HostListener('document:keydown.escape')
@@ -32,10 +32,10 @@ export class HeaderComponent {
   }
 
   toggleMenu(): void {
-    this.isMenuOpen = !this.isMenuOpen;
+    this.isMenuOpen.set(!this.isMenuOpen());
   }
 
   closeMenu(): void {
-    this.isMenuOpen = false;
+    this.isMenuOpen.set(false);
   }
 }
