@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://geomag.netlify.app/sitemap.xml
+Sitemap: https://www.geomagtopografia.com.br/sitemap.xml
