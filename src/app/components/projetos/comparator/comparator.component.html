@@ -1,0 +1,39 @@
+<div class="pj-frame">
+  <span class="pj-corner tl"></span>
+  <span class="pj-corner tr"></span>
+  <span class="pj-corner bl"></span>
+  <span class="pj-corner br"></span>
+
+  <div #cmpRef class="cmp" (mousedown)="onPointerDown($event)" (touchstart)="onPointerDown($event)">
+    <img class="cmp__img" [src]="after" alt="Depois" draggable="false" />
+
+    <div class="cmp__clip" [style.clip-path]="clipPath">
+      <img class="cmp__img" [src]="before" alt="Antes" draggable="false" />
+    </div>
+
+    <span class="cmp__label left">{{ labelBefore }}</span>
+    <span class="cmp__label right">{{ labelAfter }}</span>
+
+    <div class="cmp__handle" [style.left.%]="pos()"></div>
+
+    <div class="cmp__knob" [style.left.%]="pos()">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M8 6l-6 6 6 6" />
+        <path d="M16 6l6 6-6 6" />
+      </svg>
+    </div>
+
+    <div class="cmp__hint">Arraste</div>
+
+    <!-- <div class="pj-meta" style="top: 18px; left: 50%; transform: translateX(-50%)">
+      <span class="dot"></span> UTM 23S · PARÓQUIA · INDAIATUBA-SP
+    </div> -->
+  </div>
+</div>
