@@ -1,0 +1,66 @@
+<section id="projetos" class="pj-section">
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <div class="container pj-section__inner">
+    <div class="pj-layout">
+      <!-- Coluna esquerda: Intro -->
+      <div class="pj-intro" appReveal>
+        <div class="s-label">Antes e Depois</div>
+        <h2>Do <span class="grad-text">voo</span> à planta técnica, em uma imagem.</h2>
+        <p>
+          Cada projeto começa com um voo RTK e termina como uma planta CAD entregável. Arraste para
+          ver a mesma área em ortofoto e como vetorização técnica final.
+        </p>
+        <ul>
+          <li>Voo com drone RTK · precisão ±2 cm</li>
+          <li>Vetorização manual validada</li>
+          <li>Entrega em DWG + PDF georreferenciado</li>
+        </ul>
+        <a class="btn btn--primary" href="#contato">
+          Solicitar Orçamento
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14M13 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Coluna direita: Comparator + Stats -->
+      <div appReveal [revealDelay]="0.12">
+        <app-comparator
+          [before]="beforeImg"
+          [after]="afterImg"
+          labelBefore="Ortofoto"
+          labelAfter="Orto + CAD"
+        />
+
+        <!-- Stats strip -->
+        <!-- <div class="pj-stats">
+          <div class="pj-stats__item">
+            <div class="pj-stats__num">500+</div>
+            <div class="pj-stats__label">Projetos Entregues</div>
+            <div class="pj-stats__desc">Mapeamentos aéreos, topográficos e CAD desde 2010 em todo o interior paulista.</div>
+          </div>
+          <div class="pj-stats__item">
+            <div class="pj-stats__num">±2cm</div>
+            <div class="pj-stats__label">Precisão Horizontal</div>
+            <div class="pj-stats__desc">Drones com RTK e base GNSS de referência — dados calibrados em campo.</div>
+          </div>
+          <div class="pj-stats__item">
+            <div class="pj-stats__num">15+</div>
+            <div class="pj-stats__label">Anos de Campo</div>
+            <div class="pj-stats__desc">Equipe técnica com formação em engenharia cartográfica e topografia aplicada.</div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</section>

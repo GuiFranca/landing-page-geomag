@@ -18,6 +18,7 @@ export class HeaderComponent {
     { label: 'Início', href: '#inicio' },
     { label: 'Serviços', href: '#servicos' },
     { label: 'Tecnologia', href: '#tecnologia' },
+    { label: 'Projetos', href: '#projetos' },
     { label: 'Contato', href: '#contato' },
   ];
 

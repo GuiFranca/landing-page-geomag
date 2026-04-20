@@ -1,0 +1,42 @@
+<div class="pj-frame">
+  <span class="pj-corner tl"></span>
+  <span class="pj-corner tr"></span>
+  <span class="pj-corner bl"></span>
+  <span class="pj-corner br"></span>
+
+  <div class="lyr">
+    <div class="lyr__stage">
+      @for (layer of layers; track layer.tab; let i = $index) {
+        <div
+          class="lyr__layer"
+          [ngClass]="{ 'is-active': i === activeIdx(), 'is-behind': i !== activeIdx() }"
+          [style.z-index]="i === activeIdx() ? 2 : 1"
+        >
+          <img [src]="layer.src" [alt]="layer.title" draggable="false" />
+        </div>
+      }
+    </div>
+
+    <div class="lyr__legend">
+      <h5>{{ layers[activeIdx()].title }}</h5>
+      <p>{{ layers[activeIdx()].desc }}</p>
+    </div>
+
+    <div class="lyr__tabs">
+      @for (layer of layers; track layer.tab; let i = $index) {
+        <button
+          class="lyr__tab"
+          [ngClass]="{ 'is-active': i === activeIdx() }"
+          (click)="setActive(i)"
+        >
+          <span class="n">0{{ i + 1 }}</span
+          >{{ layer.tab }}
+        </button>
+      }
+    </div>
+
+    <div class="pj-meta pj-meta--dark" style="top: 22px; left: 22px">
+      <span class="dot"></span> MATO DENTRO · DRONE RTK
+    </div>
+  </div>
+</div>
