@@ -1,0 +1,77 @@
+<div class="slm" #containerRef (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
+  <div class="slm__media">
+    @for (layer of layers; track $index) {
+      <img
+        class="slm__layer"
+        [class.slm__layer--active]="activeIdx() === $index"
+        [src]="layer.src"
+        [alt]="layer.label + ' — ' + project.tag"
+        loading="lazy"
+      />
+    }
+
+    @if (embeddedVideo) {
+      <div
+        class="slm__layer slm__layer--video"
+        [class.slm__layer--active]="activeIdx() === layers.length"
+      >
+        <video
+          class="slm__vid"
+          autoplay
+          muted
+          loop
+          playsinline
+          [poster]="embeddedVideo.poster"
+          [attr.aria-label]="project.tag + ' — visualização 3D'"
+        >
+          <source [src]="embeddedVideo.src" type="video/mp4" />
+        </video>
+      </div>
+    }
+
+    <div class="slm__overlay" aria-hidden="true"></div>
+  </div>
+
+  <div class="slm__panel container">
+    <div class="slm__tag s-label">{{ project.tag }}</div>
+    <h3 class="slm__title">{{ project.title }}</h3>
+
+    @if (activeIdx() < layers.length) {
+      <p class="slm__desc" aria-live="polite">{{ layers[activeIdx()].desc }}</p>
+    } @else {
+      <p class="slm__desc" aria-live="polite">Visualização 3D do modelo georreferenciado.</p>
+    }
+
+    <div class="slm__dots" role="group" aria-label="Navegar entre camadas">
+      @for (layer of layers; track $index) {
+        <button
+          class="slm__dot"
+          [class.slm__dot--active]="activeIdx() === $index"
+          [attr.aria-pressed]="activeIdx() === $index"
+          [attr.aria-label]="'Ver camada ' + layer.label"
+          (click)="setActive($index)"
+        ></button>
+      }
+      @if (embeddedVideo) {
+        <button
+          class="slm__dot"
+          [class.slm__dot--active]="activeIdx() === layers.length"
+          [attr.aria-pressed]="activeIdx() === layers.length"
+          aria-label="Ver vídeo 3D"
+          (click)="setActive(layers.length)"
+        ></button>
+      }
+    </div>
+
+    @if (project.specs.length > 0) {
+      <ul class="slm__specs">
+        @for (spec of project.specs; track spec.label) {
+          <li class="slm__spec">
+            <span class="slm__spec-label">{{ spec.label }}</span>
+            <span class="slm__spec-value">{{ spec.value }}</span>
+          </li>
+        }
+      </ul>
+    }
+  </div>
+</div>

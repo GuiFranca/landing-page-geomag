@@ -1,0 +1,21 @@
+<div class="ss" role="region" aria-label="Projetos adicionais">
+  <div class="container">
+    <div class="ss__grid">
+      @for (c of cases; track c.id) {
+        <button
+          class="ss__card"
+          (click)="open.emit(c)"
+          [attr.aria-label]="'Ver projeto: ' + c.title"
+        >
+          <div class="ss__thumb">
+            <img [src]="c.thumb" [alt]="c.title" loading="lazy" />
+          </div>
+          <div class="ss__info">
+            <span class="ss__tag s-label">{{ c.tag }}</span>
+            <span class="ss__title">{{ c.title }}</span>
+          </div>
+        </button>
+      }
+    </div>
+  </div>
+</div>

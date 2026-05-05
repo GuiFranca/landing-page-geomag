@@ -1,77 +1,153 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RevealDirective } from '../../directives/reveal.directive';
-import { ComparatorComponent } from './comparator/comparator.component';
-import { LayerDef } from './layer-stack/layer-stack.component';
-import { CaseItem } from './case-grid/case-grid.component';
+import { SceneHeroComponent } from './scenes/scene-hero/scene-hero.component';
+import { SceneLayerMorphComponent } from './scenes/scene-layer-morph/scene-layer-morph.component';
+import { SceneStripComponent } from './scenes/scene-strip/scene-strip.component';
+import { CaseModalComponent } from './case-modal/case-modal.component';
+import { Scene, CaseCard } from './projetos.types';
 
 const IMG = (path: string) => `assets/images/projetos/${path}`;
+const VID = (path: string) => `assets/videos/projetos/${path}`;
 
-const LAYER_DEFS: LayerDef[] = [
+const SCENES: Scene[] = [
   {
-    tab: 'Ortofoto',
-    title: 'Ortomosaico Aéreo',
-    desc: 'Imagem georreferenciada de alta resolução gerada por drone RTK. Precisão horizontal de ±2 cm.',
-    src: IMG('mato-dentro-orto.png'),
-  },
-  {
-    tab: 'DEM',
-    title: 'Modelo Digital de Elevação',
-    desc: 'Superfície 3D colorizada por altitude. Permite análise de relevo, bacias e volumetria.',
-    src: IMG('mato-dentro-dem.png'),
-  },
-  {
-    tab: 'CAD',
-    title: 'Vetorização Topográfica',
-    desc: 'Planta CAD com curvas de nível, elementos vetorizados e pontos notáveis prontos para projeto.',
-    src: IMG('mato-dentro-cad.png'),
-  },
-];
-
-const CASES: CaseItem[] = [
-  {
-    tag: 'Paróquia · Indaiatuba',
-    title: 'Levantamento Urbano + Vetorização CAD',
-    meta: '1.2 ha · Ortofoto ↔ CAD · 2025',
-    img: IMG('paroquia-orto-cad.png'),
-    desc: 'Levantamento aerofotogramétrico de área urbana com posterior vetorização de edificações, calçadas, vegetação e divisas em ambiente CAD. Entregue com base georreferenciada UTM 23S.',
-    gallery: [
-      { src: IMG('paroquia-orto.png'), label: 'Ortofoto' },
-      { src: IMG('paroquia-orto-cad.png'), label: 'Orto + CAD' },
-      { src: IMG('paroquia-cad.png'), label: 'CAD Final' },
-    ],
-    specs: [
-      { label: 'Área', value: '1,2 ha' },
-      { label: 'Precisão', value: '±2 cm' },
-      { label: 'Datum', value: 'SIRGAS 2000' },
+    kind: 'hero',
+    kicker: 'Do voo à planta',
+    title: 'Cada projeto em três camadas.',
+    video: {
+      src: VID('beira-rio-transition.mp4'),
+      poster: VID('beira-rio-transition-poster.jpg'),
+    },
+    stats: [
+      { label: 'Projetos', value: '7' },
+      { label: 'Hectares mapeados', value: '14ha' },
+      { label: 'Precisão', value: '±2cm' },
     ],
   },
   {
-    tag: 'Mato Dentro · Rural',
-    title: 'Ortofoto + DEM + CAD Topográfico',
-    meta: '8.4 ha · Tríptico Completo · 2025',
-    img: IMG('mato-dentro-dem.png'),
-    desc: 'Mapeamento rural entregue em três camadas: ortomosaico aéreo, modelo digital de elevação (DEM) e planta CAD com curvas de nível para projeto de manejo.',
-    gallery: [
-      { src: IMG('mato-dentro-orto.png'), label: 'Ortofoto' },
-      { src: IMG('mato-dentro-dem.png'), label: 'DEM' },
-      { src: IMG('mato-dentro-cad.png'), label: 'CAD' },
-    ],
-    specs: [
-      { label: 'Área', value: '8,4 ha' },
-      { label: 'Resolução DEM', value: '0,5 m' },
-      { label: 'GSD', value: '2,8 cm/px' },
+    kind: 'layer-morph',
+    project: {
+      tag: 'Mato Dentro · Rural',
+      title: 'Ortofoto + DEM + CAD Topográfico',
+      specs: [
+        { label: 'Área', value: '8,4ha' },
+        { label: 'GSD', value: '2,8cm/px' },
+        { label: 'Datum', value: 'SIRGAS 2000' },
+      ],
+    },
+    layers: [
+      {
+        src: IMG('mato-dentro-orto.png'),
+        label: 'Ortofoto',
+        desc: 'Imagem georreferenciada de alta resolução gerada por drone RTK. Precisão horizontal de ±2 cm.',
+      },
+      {
+        src: IMG('mato-dentro-dem.png'),
+        label: 'DEM',
+        desc: 'Superfície 3D colorizada por altitude. Permite análise de relevo, bacias e volumetria.',
+      },
+      {
+        src: IMG('mato-dentro-cad.png'),
+        label: 'CAD',
+        desc: 'Planta CAD com curvas de nível, elementos vetorizados e pontos notáveis prontos para projeto.',
+      },
     ],
   },
   {
-    tag: 'LEPAC · Parque',
-    title: 'Projeto Vetorizado Georreferenciado',
-    meta: 'Área Pública · Entrega Final',
-    img: IMG('lepac-entrega.jpg'),
-    desc: 'Produto final de entrega para cliente: prancha técnica georreferenciada do parque com carimbo GeoMAG, legenda e coordenadas em sistema UTM.',
-    gallery: [{ src: IMG('lepac-entrega.jpg'), label: 'Prancha Final' }],
-    specs: [
-      { label: 'Tipo', value: 'Prancha A3' },
-      { label: 'Sistema', value: 'UTM 23S' },
+    kind: 'layer-morph',
+    project: {
+      tag: 'Paróquia · Indaiatuba',
+      title: 'Levantamento Urbano + 3D',
+      specs: [
+        { label: 'Área', value: '1,2ha' },
+        { label: 'Precisão', value: '±2cm' },
+        { label: 'Datum', value: 'UTM 23S' },
+      ],
+    },
+    layers: [
+      {
+        src: IMG('paroquia-orto.png'),
+        label: 'Ortofoto',
+        desc: 'Levantamento aerofotogramétrico de área urbana com georreferenciamento em SIRGAS 2000.',
+      },
+      {
+        src: IMG('paroquia-orto-cad.png'),
+        label: 'Orto + CAD',
+        desc: 'Sobreposição da vetorização técnica sobre a ortofoto para validação em campo.',
+      },
+      {
+        src: IMG('paroquia-cad.png'),
+        label: 'CAD Final',
+        desc: 'Planta CAD com edificações, calçadas, vegetação e divisas — entregue em DWG + PDF.',
+      },
+    ],
+    embeddedVideo: {
+      src: VID('paroquia-3d.mp4'),
+      poster: VID('paroquia-3d-poster.jpg'),
+      durationSec: 8,
+    },
+  },
+  {
+    kind: 'layer-morph',
+    project: {
+      tag: 'Beira Rio · Rural',
+      title: 'Mapeamento com Transição DEM',
+      specs: [],
+    },
+    layers: [
+      {
+        src: IMG('beira-rio-orto.webp'),
+        label: 'Ortofoto',
+        desc: 'Ortomosaico da área rural às margens do rio gerado a partir de voo com drone RTK.',
+      },
+      {
+        src: IMG('beira-rio-dem.webp'),
+        label: 'DEM',
+        desc: 'Modelo digital de elevação com colorização hipsométrica revelando o relevo da região.',
+      },
+    ],
+  },
+  {
+    kind: 'strip',
+    cases: [
+      {
+        id: 'casa-branca',
+        tag: 'Casa Branca · HB',
+        title: 'Pranchas Técnicas Georreferenciadas',
+        thumb: IMG('casa-branca-thumb.jpg'),
+        gallery: [
+          { src: IMG('casa-branca-1.jpg'), alt: 'Casa Branca — Prancha com foto aérea' },
+          { src: IMG('casa-branca-2.jpg'), alt: 'Casa Branca — Prancha técnica' },
+        ],
+      },
+      {
+        id: 'golinelli',
+        tag: 'LEPAC · Parque',
+        title: 'Parque Golinelli — Prancha LEPAC',
+        thumb: IMG('golinelli-thumb.jpg'),
+        gallery: [{ src: IMG('golinelli.jpg'), alt: 'Parque Golinelli — Prancha LEPAC entregue' }],
+      },
+      {
+        id: 'estrela-do-sul',
+        tag: 'Estrela do Sul II',
+        title: 'Projeto de Loteamento',
+        thumb: IMG('estrela-do-sul-thumb.jpg'),
+        gallery: [
+          { src: IMG('estrela-do-sul.jpg'), alt: 'Estrela do Sul II — Projeto de Loteamento' },
+        ],
+      },
+      {
+        id: 'terraplanagem',
+        tag: 'Terraplanagem',
+        title: 'Evolução da Obra — 4 Etapas',
+        thumb: IMG('terraplanagem-01-thumb.jpg'),
+        gallery: [
+          { src: IMG('terraplanagem-01.jpg'), alt: 'Terraplanagem — Etapa 1' },
+          { src: IMG('terraplanagem-02.jpg'), alt: 'Terraplanagem — Etapa 2' },
+          { src: IMG('terraplanagem-03.jpg'), alt: 'Terraplanagem — Etapa 3' },
+          { src: IMG('terraplanagem-04.jpg'), alt: 'Terraplanagem — Etapa 4' },
+        ],
+      },
     ],
   },
 ];
@@ -79,14 +155,25 @@ const CASES: CaseItem[] = [
 @Component({
   selector: 'app-projetos',
   standalone: true,
-  imports: [RevealDirective, ComparatorComponent],
+  imports: [
+    RevealDirective,
+    SceneHeroComponent,
+    SceneLayerMorphComponent,
+    SceneStripComponent,
+    CaseModalComponent,
+  ],
   templateUrl: './projetos.component.html',
   styleUrls: ['./projetos.component.scss'],
 })
 export class ProjetosComponent {
-  readonly layerDefs = LAYER_DEFS;
-  readonly cases = CASES;
+  readonly scenes = SCENES;
+  activeModal = signal<CaseCard | null>(null);
 
-  readonly beforeImg = IMG('paroquia-orto.png');
-  readonly afterImg = IMG('paroquia-orto-cad.png');
+  openModal(c: CaseCard): void {
+    this.activeModal.set(c);
+  }
+
+  closeModal(): void {
+    this.activeModal.set(null);
+  }
 }

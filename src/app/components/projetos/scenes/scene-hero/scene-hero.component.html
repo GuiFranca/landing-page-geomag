@@ -1,0 +1,38 @@
+<div class="sh">
+  <div class="sh__media">
+    @if (isMobile() || prefersReducedMotion) {
+      <div
+        class="sh__poster"
+        [style.background-image]="'url(' + video.poster + ')'"
+        role="img"
+        [attr.aria-label]="'Imagem do projeto Beira Rio — ' + kicker"
+      ></div>
+    } @else {
+      <video
+        #videoRef
+        class="sh__video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="none"
+        [poster]="video.poster"
+        aria-label="Vídeo de transição: farmland para DEM — projeto Beira Rio"
+      ></video>
+    }
+    <div class="sh__overlay" aria-hidden="true"></div>
+  </div>
+
+  <div class="sh__content container">
+    <p class="s-label sh__kicker">{{ kicker }}</p>
+    <h2 class="sh__title">{{ title }}</h2>
+    <div class="sh__stats" aria-label="Estatísticas do portfólio">
+      @for (stat of stats; track stat.label) {
+        <div class="sh__stat">
+          <span class="sh__stat-val grad-text">{{ stat.value }}</span>
+          <span class="sh__stat-lbl">{{ stat.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</div>

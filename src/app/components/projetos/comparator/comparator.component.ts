@@ -1,3 +1,4 @@
+/* @standby — mantido por decisao do projeto; nao esta renderizado. Preservar para uso futuro. */
 import {
   Component,
   Input,

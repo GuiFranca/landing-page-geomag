@@ -1,3 +1,4 @@
+/* @standby — substituido por SceneStripComponent + CaseModalComponent; mantido por decisao do projeto. */
 import { Component, Input, signal, HostListener } from '@angular/core';
 
 export interface CaseSpec {

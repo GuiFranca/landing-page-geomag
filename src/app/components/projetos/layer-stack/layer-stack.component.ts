@@ -1,3 +1,4 @@
+/* @standby — substituido por SceneLayerMorphComponent; mantido por decisao do projeto. */
 import { Component, Input, signal } from '@angular/core';
 import { NgClass } from '@angular/common';
 
