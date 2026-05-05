@@ -1,6 +1,13 @@
 <div class="case-grid">
   @for (c of cases; track c.title; let i = $index) {
-    <div class="case-card" [class.case-card--featured]="i === 0" (click)="openModal(c)">
+    <div
+      class="case-card"
+      [class.case-card--featured]="i === 0"
+      tabindex="0"
+      role="button"
+      (click)="openModal(c)"
+      (keydown)="openModalFromKeyboard($event, c)"
+    >
       <img class="case-card__img" [src]="c.img" [alt]="c.title" />
       <div class="case-card__fade"></div>
       <div class="case-card__arrow">
@@ -28,8 +35,16 @@
 
 <!-- Modal -->
 @if (modalCase()) {
-  <div class="pj-modal" [class.is-open]="!!modalCase()" (click)="closeModal()">
-    <div class="pj-modal__panel" (click)="$event.stopPropagation()">
+  <div
+    class="pj-modal"
+    [class.is-open]="!!modalCase()"
+    tabindex="0"
+    role="button"
+    aria-label="Fechar modal"
+    (click)="onBackdropClick($event)"
+    (keydown)="onBackdropKeydown($event)"
+  >
+    <div class="pj-modal__panel">
       <div class="pj-modal__head">
         <div>
           <div class="s-label" style="margin-bottom: 6px">{{ modalCase()!.tag }}</div>

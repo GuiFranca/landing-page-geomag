@@ -91,4 +91,45 @@ describe('CaseModalComponent', () => {
     component.next();
     expect(component.activeImg()).toBe(2);
   });
+
+  it('ArrowRight avanca quando ha slider', () => {
+    component.case = multiCase;
+    component.onArrowRight();
+    expect(component.activeImg()).toBe(1);
+  });
+
+  it('ArrowLeft volta quando ha slider', () => {
+    component.case = multiCase;
+    component.next();
+    component.onArrowLeft();
+    expect(component.activeImg()).toBe(0);
+  });
+
+  it('ArrowRight nao altera quando nao ha slider', () => {
+    component.case = singleCase;
+    component.onArrowRight();
+    expect(component.activeImg()).toBe(0);
+  });
+
+  it('swipe esquerdo avanca imagem', () => {
+    component.case = multiCase;
+    component.onTouchStart({ touches: [{ clientX: 200 }] } as unknown as TouchEvent);
+    component.onTouchEnd({ changedTouches: [{ clientX: 100 }] } as unknown as TouchEvent);
+    expect(component.activeImg()).toBe(1);
+  });
+
+  it('swipe direito volta imagem', () => {
+    component.case = multiCase;
+    component.next();
+    component.onTouchStart({ touches: [{ clientX: 100 }] } as unknown as TouchEvent);
+    component.onTouchEnd({ changedTouches: [{ clientX: 220 }] } as unknown as TouchEvent);
+    expect(component.activeImg()).toBe(0);
+  });
+
+  it('swipe curto nao altera imagem', () => {
+    component.case = multiCase;
+    component.onTouchStart({ touches: [{ clientX: 100 }] } as unknown as TouchEvent);
+    component.onTouchEnd({ changedTouches: [{ clientX: 120 }] } as unknown as TouchEvent);
+    expect(component.activeImg()).toBe(0);
+  });
 });

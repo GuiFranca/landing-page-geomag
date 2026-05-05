@@ -37,8 +37,27 @@ export class CaseGridComponent {
     this.modalCase.set(c);
   }
 
+  openModalFromKeyboard(e: KeyboardEvent, c: CaseItem): void {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      this.openModal(c);
+    }
+  }
+
   closeModal(): void {
     this.modalCase.set(null);
+  }
+
+  onBackdropClick(e: MouseEvent): void {
+    if ((e.target as HTMLElement).classList.contains('pj-modal')) {
+      this.closeModal();
+    }
+  }
+
+  onBackdropKeydown(e: KeyboardEvent): void {
+    if (e.key === 'Enter' || e.key === ' ') {
+      this.closeModal();
+    }
   }
 
   @HostListener('document:keydown.escape')

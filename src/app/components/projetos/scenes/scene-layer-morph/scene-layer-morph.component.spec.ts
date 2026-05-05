@@ -36,6 +36,11 @@ describe('SceneLayerMorphComponent', () => {
     expect(component.activeIdx()).toBe(2);
   });
 
+  it('setActive aplica clamp para indice valido', () => {
+    component.setActive(99);
+    expect(component.activeIdx()).toBe(2);
+  });
+
   it('totalLayers retorna layers.length sem embeddedVideo', () => {
     expect(component.totalLayers).toBe(3);
   });

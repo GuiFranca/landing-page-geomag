@@ -24,6 +24,7 @@ export class CaseModalComponent implements AfterViewInit {
   private el = inject(ElementRef);
 
   activeImg = signal(0);
+  private touchStartX = 0;
 
   get isSlider(): boolean {
     return this.case.gallery.length > 1;
@@ -39,6 +40,18 @@ export class CaseModalComponent implements AfterViewInit {
     this.dismissed.emit();
   }
 
+  @HostListener('document:keydown.arrowleft')
+  onArrowLeft(): void {
+    if (!this.isSlider) return;
+    this.prev();
+  }
+
+  @HostListener('document:keydown.arrowright')
+  onArrowRight(): void {
+    if (!this.isSlider) return;
+    this.next();
+  }
+
   prev(): void {
     this.activeImg.update((i) => Math.max(i - 1, 0));
   }
@@ -50,6 +63,28 @@ export class CaseModalComponent implements AfterViewInit {
   onBackdropClick(e: MouseEvent): void {
     if ((e.target as HTMLElement).classList.contains('cm-backdrop')) {
       this.dismissed.emit();
+    }
+  }
+
+  onBackdropKeydown(e: KeyboardEvent): void {
+    if (e.key === 'Enter' || e.key === ' ') {
+      this.dismissed.emit();
+    }
+  }
+
+  onTouchStart(e: TouchEvent): void {
+    if (!this.isSlider) return;
+    this.touchStartX = e.touches[0].clientX;
+  }
+
+  onTouchEnd(e: TouchEvent): void {
+    if (!this.isSlider) return;
+    const delta = e.changedTouches[0].clientX - this.touchStartX;
+    if (Math.abs(delta) < 30) return;
+    if (delta < 0) {
+      this.next();
+    } else {
+      this.prev();
     }
   }
 }

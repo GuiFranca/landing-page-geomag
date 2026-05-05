@@ -66,8 +66,10 @@ export class SceneLayerMorphComponent implements AfterViewInit, OnDestroy {
   }
 
   setActive(i: number): void {
-    this.stopAutoAdvance();
-    this.activeIdx.set(i);
+    this.activeIdx.set(Math.max(0, Math.min(i, this.totalLayers - 1)));
+    if (!this.isMobile && !this.prefersReducedMotion) {
+      this.startAutoAdvance();
+    }
   }
 
   onTouchStart(e: TouchEvent): void {
@@ -75,6 +77,9 @@ export class SceneLayerMorphComponent implements AfterViewInit, OnDestroy {
   }
 
   onTouchEnd(e: TouchEvent): void {
+    if (!this.isMobile && !this.prefersReducedMotion) {
+      this.startAutoAdvance();
+    }
     const delta = e.changedTouches[0].clientX - this.touchStartX;
     if (Math.abs(delta) < 30) return;
     if (delta < 0) {
@@ -85,12 +90,17 @@ export class SceneLayerMorphComponent implements AfterViewInit, OnDestroy {
   }
 
   private startAutoAdvance(): void {
+    this.stopAutoAdvance();
+    if (this.totalLayers < 2) return;
     this.intervalId = setInterval(() => {
       this.activeIdx.update((i) => (i + 1) % this.totalLayers);
     }, 3000);
   }
 
   private stopAutoAdvance(): void {
-    if (this.intervalId) clearInterval(this.intervalId);
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = undefined;
+    }
   }
 }
