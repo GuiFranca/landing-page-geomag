@@ -12,10 +12,10 @@
         #videoRef
         class="sh__video"
         autoplay
-        muted
+        [muted]="true"
         loop
         playsinline
-        preload="none"
+        preload="metadata"
         [poster]="video.poster"
         aria-label="Vídeo de transição: farmland para DEM"
       ></video>
