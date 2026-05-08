@@ -38,3 +38,181 @@
     margin: 0;
   }
 }
+
+// ─── Layout A: reel vertical compacto ─────────────────────────────────────────
+.pj-section--A {
+  --pj-scene-height: 52vh;
+  --pj-scene-height-mobile: 50vh;
+  --pj-scene-gap: 0px;
+  --pj-strip-padding: 36px;
+  --pj-strip-padding-mobile: 28px;
+
+  .pj-section__inner {
+    padding-top: 80px;
+    padding-bottom: 40px;
+  }
+}
+
+// ─── Layout B: mosaico ─────────────────────────────────────────────────────────
+.pj-section--B {
+  --pj-strip-padding: 32px;
+  --pj-strip-padding-mobile: 24px;
+
+  padding-bottom: 0;
+
+  .pj-section__inner {
+    padding-top: 80px;
+    padding-bottom: 32px;
+  }
+}
+
+.pj-mosaic {
+  &__hero-row {
+    --pj-scene-height: 40vh;
+    --pj-scene-gap: 0px;
+    overflow: hidden;
+  }
+
+  &__morph-row {
+    --pj-scene-height: 100%;
+    --pj-scene-gap: 0px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 54vh;
+    gap: 3px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      height: auto;
+    }
+  }
+}
+
+// Override overlay direction and panel position for mosaic morphs
+/* stylelint-disable selector-pseudo-element-no-unknown */
+.pj-mosaic__morph-row ::ng-deep .slm__overlay {
+  background: linear-gradient(180deg, transparent 35%, rgba(0, 0, 0, 0.88) 100%);
+}
+
+.pj-mosaic__morph-row ::ng-deep .slm__panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: auto;
+  max-width: 100%;
+  height: auto;
+  justify-content: flex-end;
+  padding: 12px 20px 20px;
+}
+
+.pj-mosaic__morph-row ::ng-deep .slm {
+  height: 100%;
+  margin-bottom: 0;
+}
+
+// ─── Layout C: reel horizontal ─────────────────────────────────────────────────
+.pj-section--C {
+  --pj-scene-height: 100%;
+  --pj-scene-gap: 0px;
+  --pj-strip-padding: 0px;
+
+  padding-bottom: 0;
+
+  .pj-section__inner {
+    padding-top: 80px;
+    padding-bottom: 32px;
+  }
+}
+
+.pj-reel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  height: 78vh;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+}
+
+// Strip no reel horizontal: galeria 2×2 centralizada
+.pj-section--C .pj-reel__slide:last-child {
+  ::ng-deep .ss {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0;
+  }
+
+  ::ng-deep .ss__grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+// ─── Dev Toggle ───────────────────────────────────────────────────────────────
+.pj-dev-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(10, 10, 10, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 8px 10px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+
+  &__label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    margin-right: 4px;
+    font-family: var(--font-mono);
+  }
+
+  &__btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    cursor: pointer;
+    transition:
+      background 0.2s,
+      border-color 0.2s,
+      color 0.2s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+
+    &--active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+  }
+}

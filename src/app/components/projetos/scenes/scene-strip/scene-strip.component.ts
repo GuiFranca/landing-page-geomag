@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CaseCard } from '../../projetos.types';
 
 @Component({
@@ -9,5 +9,4 @@ import { CaseCard } from '../../projetos.types';
 })
 export class SceneStripComponent {
   @Input() cases: CaseCard[] = [];
-  @Output() open = new EventEmitter<CaseCard>();
 }

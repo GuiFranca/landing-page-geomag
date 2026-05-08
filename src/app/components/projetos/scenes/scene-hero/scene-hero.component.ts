@@ -10,7 +10,7 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { VideoAsset, Stat } from '../../projetos.types';
+import { VideoAsset } from '../../projetos.types';
 
 @Component({
   selector: 'app-scene-hero',
@@ -22,7 +22,6 @@ export class SceneHeroComponent implements AfterViewInit, OnDestroy {
   @Input() video!: VideoAsset;
   @Input() title = '';
   @Input() kicker = '';
-  @Input() stats: Stat[] = [];
 
   @ViewChild('videoRef') videoRef?: ElementRef<HTMLVideoElement>;
 

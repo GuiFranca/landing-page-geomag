@@ -1,8 +1,3 @@
-export interface Stat {
-  label: string;
-  value: string;
-}
-
 export interface VideoAsset {
   src: string;
   poster: string;
@@ -16,17 +11,6 @@ export interface Layer {
   desc: string;
 }
 
-export interface Spec {
-  label: string;
-  value: string;
-}
-
-export interface ProjectMeta {
-  tag: string;
-  title: string;
-  specs: Spec[];
-}
-
 export interface GalleryItem {
   src: string;
   alt: string;
@@ -35,10 +19,8 @@ export interface GalleryItem {
 
 export interface CaseCard {
   id: string;
-  tag: string;
-  title: string;
   thumb: string;
-  gallery: GalleryItem[];
+  alt: string;
 }
 
 export interface HeroScene {
@@ -46,12 +28,10 @@ export interface HeroScene {
   video: VideoAsset;
   title: string;
   kicker: string;
-  stats: Stat[];
 }
 
 export interface LayerMorphScene {
   kind: 'layer-morph';
-  project: ProjectMeta;
   layers: Layer[];
   embeddedVideo?: VideoAsset;
 }

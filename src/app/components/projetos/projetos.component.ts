@@ -1,10 +1,10 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, isDevMode, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { RevealDirective } from '../../directives/reveal.directive';
 import { SceneHeroComponent } from './scenes/scene-hero/scene-hero.component';
 import { SceneLayerMorphComponent } from './scenes/scene-layer-morph/scene-layer-morph.component';
 import { SceneStripComponent } from './scenes/scene-strip/scene-strip.component';
-import { CaseModalComponent } from './case-modal/case-modal.component';
-import { Scene, CaseCard } from './projetos.types';
+import { Scene, HeroScene, LayerMorphScene, StripScene } from './projetos.types';
 
 const IMG = (path: string) => `assets/images/projetos/${path}`;
 const VID = (path: string) => `assets/videos/projetos/${path}`;
@@ -13,28 +13,14 @@ const SCENES: Scene[] = [
   {
     kind: 'hero',
     kicker: 'Do voo à planta',
-    title: 'Cada projeto em três camadas.',
+    title: 'O terreno em alta resolução.',
     video: {
       src: VID('beira-rio-transition.mp4'),
       poster: VID('beira-rio-transition-poster.jpg'),
     },
-    stats: [
-      { label: 'Projetos', value: '7' },
-      { label: 'Hectares mapeados', value: '14ha' },
-      { label: 'Precisão', value: '±2cm' },
-    ],
   },
   {
     kind: 'layer-morph',
-    project: {
-      tag: 'Mato Dentro · Rural',
-      title: 'Ortofoto + DEM + CAD Topográfico',
-      specs: [
-        { label: 'Área', value: '8,4ha' },
-        { label: 'GSD', value: '2,8cm/px' },
-        { label: 'Datum', value: 'SIRGAS 2000' },
-      ],
-    },
     layers: [
       {
         src: IMG('mato-dentro-orto.png'),
@@ -55,15 +41,6 @@ const SCENES: Scene[] = [
   },
   {
     kind: 'layer-morph',
-    project: {
-      tag: 'Paróquia · Indaiatuba',
-      title: 'Levantamento Urbano + 3D',
-      specs: [
-        { label: 'Área', value: '1,2ha' },
-        { label: 'Precisão', value: '±2cm' },
-        { label: 'Datum', value: 'UTM 23S' },
-      ],
-    },
     layers: [
       {
         src: IMG('paroquia-orto.png'),
@@ -89,16 +66,11 @@ const SCENES: Scene[] = [
   },
   {
     kind: 'layer-morph',
-    project: {
-      tag: 'Beira Rio · Rural',
-      title: 'Mapeamento com Transição DEM',
-      specs: [],
-    },
     layers: [
       {
         src: IMG('beira-rio-orto.webp'),
         label: 'Ortofoto',
-        desc: 'Ortomosaico da área rural às margens do rio gerado a partir de voo com drone RTK.',
+        desc: 'Ortomosaico gerado a partir de voo com drone RTK. Base para todos os produtos derivados.',
       },
       {
         src: IMG('beira-rio-dem.webp'),
@@ -112,68 +84,68 @@ const SCENES: Scene[] = [
     cases: [
       {
         id: 'casa-branca',
-        tag: 'Casa Branca · HB',
-        title: 'Pranchas Técnicas Georreferenciadas',
         thumb: IMG('casa-branca-thumb.jpg'),
-        gallery: [
-          { src: IMG('casa-branca-1.jpg'), alt: 'Casa Branca — Prancha com foto aérea' },
-          { src: IMG('casa-branca-2.jpg'), alt: 'Casa Branca — Prancha técnica' },
-        ],
+        alt: 'Pranchas técnicas georreferenciadas',
       },
       {
         id: 'golinelli',
-        tag: 'LEPAC · Parque',
-        title: 'Parque Golinelli — Prancha LEPAC',
         thumb: IMG('golinelli-thumb.jpg'),
-        gallery: [{ src: IMG('golinelli.jpg'), alt: 'Parque Golinelli — Prancha LEPAC entregue' }],
+        alt: 'Prancha LEPAC — Parque Golinelli',
       },
       {
         id: 'estrela-do-sul',
-        tag: 'Estrela do Sul II',
-        title: 'Projeto de Loteamento',
         thumb: IMG('estrela-do-sul-thumb.jpg'),
-        gallery: [
-          { src: IMG('estrela-do-sul.jpg'), alt: 'Estrela do Sul II — Projeto de Loteamento' },
-        ],
+        alt: 'Projeto de loteamento',
       },
       {
         id: 'terraplanagem',
-        tag: 'Terraplanagem',
-        title: 'Evolução da Obra — 4 Etapas',
         thumb: IMG('terraplanagem-01-thumb.jpg'),
-        gallery: [
-          { src: IMG('terraplanagem-01.jpg'), alt: 'Terraplanagem — Etapa 1' },
-          { src: IMG('terraplanagem-02.jpg'), alt: 'Terraplanagem — Etapa 2' },
-          { src: IMG('terraplanagem-03.jpg'), alt: 'Terraplanagem — Etapa 3' },
-          { src: IMG('terraplanagem-04.jpg'), alt: 'Terraplanagem — Etapa 4' },
-        ],
+        alt: 'Evolução de obra — terraplanagem',
       },
     ],
   },
 ];
 
+export type LayoutMode = 'A' | 'B' | 'C';
+
 @Component({
   selector: 'app-projetos',
   standalone: true,
-  imports: [
-    RevealDirective,
-    SceneHeroComponent,
-    SceneLayerMorphComponent,
-    SceneStripComponent,
-    CaseModalComponent,
-  ],
+  imports: [RevealDirective, SceneHeroComponent, SceneLayerMorphComponent, SceneStripComponent],
   templateUrl: './projetos.component.html',
   styleUrls: ['./projetos.component.scss'],
 })
 export class ProjetosComponent {
-  readonly scenes = SCENES;
-  activeModal = signal<CaseCard | null>(null);
+  private platformId = inject(PLATFORM_ID);
 
-  openModal(c: CaseCard): void {
-    this.activeModal.set(c);
+  readonly scenes = SCENES;
+  readonly isDev = isDevMode();
+
+  layoutMode = signal<LayoutMode>(this.getStoredLayout());
+
+  private getStoredLayout(): LayoutMode {
+    if (isPlatformBrowser(this.platformId)) {
+      return (localStorage.getItem('pj-layout') as LayoutMode) ?? 'A';
+    }
+    return 'A';
   }
 
-  closeModal(): void {
-    this.activeModal.set(null);
+  setLayout(mode: LayoutMode): void {
+    this.layoutMode.set(mode);
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('pj-layout', mode);
+    }
+  }
+
+  getHeroScene(): HeroScene | undefined {
+    return this.scenes.find((s): s is HeroScene => s.kind === 'hero');
+  }
+
+  getMorphScenes(): LayerMorphScene[] {
+    return this.scenes.filter((s): s is LayerMorphScene => s.kind === 'layer-morph');
+  }
+
+  getStripScene(): StripScene | undefined {
+    return this.scenes.find((s): s is StripScene => s.kind === 'strip');
   }
 }

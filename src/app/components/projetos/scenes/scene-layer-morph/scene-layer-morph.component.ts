@@ -10,7 +10,7 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Layer, ProjectMeta, VideoAsset } from '../../projetos.types';
+import { Layer, VideoAsset } from '../../projetos.types';
 
 @Component({
   selector: 'app-scene-layer-morph',
@@ -19,7 +19,6 @@ import { Layer, ProjectMeta, VideoAsset } from '../../projetos.types';
   styleUrls: ['./scene-layer-morph.component.scss'],
 })
 export class SceneLayerMorphComponent implements AfterViewInit, OnDestroy {
-  @Input() project!: ProjectMeta;
   @Input() layers: Layer[] = [];
   @Input() embeddedVideo?: VideoAsset;
 
