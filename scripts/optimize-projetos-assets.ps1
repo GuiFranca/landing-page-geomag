@@ -25,7 +25,7 @@ Write-Host "=== VIDEOS ==="
 $bv = Join-Path $Source "BEIRA RIO\Aerial_transition_farmland_to_DEM_202605042030.mp4"
 if (Test-Path $bv) {
   Write-Host "  VID beira-rio-transition..."
-  ffmpeg -i $bv -vf "scale='min(1920,iw)':-2" -c:v libx264 -crf 23 -preset slow -an -movflags +faststart (Join-Path $VidDest "beira-rio-transition.mp4") -y
+  ffmpeg -i $bv -vf "scale='min(1920,iw)':-2" -c:v libx264 -crf 19 -preset veryslow -tune film -profile:v high -level 4.0 -pix_fmt yuv420p -an -movflags +faststart (Join-Path $VidDest "beira-rio-transition.mp4") -y
   ffmpeg -i $bv -ss 2 -vframes 1 -q:v 3 (Join-Path $VidDest "beira-rio-transition-poster.jpg") -y
 } else { Write-Warning "Nao encontrado: $bv" }
 
