@@ -1,4 +1,4 @@
-<section id="projetos" class="pj-section" [class]="'pj-section--' + layoutMode()">
+<section id="projetos" class="pj-section">
   <div class="grid-bg" aria-hidden="true"></div>
 
   <div class="container pj-section__inner">
@@ -12,92 +12,21 @@
     </header>
   </div>
 
-  @switch (layoutMode()) {
-    @case ('A') {
-      <!-- Layout A: reel vertical compacto, zero gap entre cenas -->
-      @for (scene of scenes; track $index) {
-        @switch (scene.kind) {
-          @case ('hero') {
-            <app-scene-hero
-              [video]="$any(scene).video"
-              [title]="$any(scene).title"
-              [kicker]="$any(scene).kicker"
-            />
-          }
-          @case ('layer-morph') {
-            <app-scene-layer-morph
-              [layers]="$any(scene).layers"
-              [embeddedVideo]="$any(scene).embeddedVideo"
-            />
-          }
-          @case ('strip') {
-            <app-scene-strip [cases]="$any(scene).cases" />
-          }
-        }
-      }
-    }
-
-    @case ('B') {
-      <!-- Layout B: mosaico — hero full-width + grid 3 colunas + strip -->
-      <div class="pj-mosaic">
-        @if (getHeroScene(); as hero) {
-          <div class="pj-mosaic__hero-row">
-            <app-scene-hero [video]="hero.video" [title]="hero.title" [kicker]="hero.kicker" />
-          </div>
-        }
-        <div class="pj-mosaic__morph-row">
-          @for (m of getMorphScenes(); track $index) {
-            <app-scene-layer-morph [layers]="m.layers" [embeddedVideo]="m.embeddedVideo" />
-          }
-        </div>
-        @if (getStripScene(); as strip) {
-          <app-scene-strip [cases]="strip.cases" />
-        }
+  <div class="pj-mosaic">
+    @if (heroScene; as hero) {
+      <div class="pj-mosaic__hero-row">
+        <app-scene-hero [video]="hero.video" [title]="hero.title" [kicker]="hero.kicker" />
       </div>
     }
 
-    @case ('C') {
-      <!-- Layout C: reel horizontal com snap scroll -->
-      <div class="pj-reel" role="region" aria-label="Galeria de projetos — scroll horizontal">
-        @for (scene of scenes; track $index) {
-          <div class="pj-reel__slide">
-            @switch (scene.kind) {
-              @case ('hero') {
-                <app-scene-hero
-                  [video]="$any(scene).video"
-                  [title]="$any(scene).title"
-                  [kicker]="$any(scene).kicker"
-                />
-              }
-              @case ('layer-morph') {
-                <app-scene-layer-morph
-                  [layers]="$any(scene).layers"
-                  [embeddedVideo]="$any(scene).embeddedVideo"
-                />
-              }
-              @case ('strip') {
-                <app-scene-strip [cases]="$any(scene).cases" />
-              }
-            }
-          </div>
-        }
-      </div>
-    }
-  }
-
-  @if (isDev) {
-    <div class="pj-dev-toggle" role="group" aria-label="Dev: alternar layout">
-      <span class="pj-dev-toggle__label">Layout</span>
-      @for (mode of ['A', 'B', 'C']; track mode) {
-        <button
-          class="pj-dev-toggle__btn"
-          [class.pj-dev-toggle__btn--active]="layoutMode() === mode"
-          (click)="setLayout($any(mode))"
-          [attr.aria-pressed]="layoutMode() === mode"
-        >
-          {{ mode }}
-        </button>
+    <div class="pj-mosaic__morph-row">
+      @for (m of morphScenes; track $index) {
+        <app-scene-layer-morph [layers]="m.layers" [embeddedVideo]="m.embeddedVideo" />
       }
     </div>
-  }
+
+    @if (stripScene; as strip) {
+      <app-scene-strip [cases]="strip.cases" />
+    }
+  </div>
 </section>

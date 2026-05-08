@@ -1,5 +1,4 @@
-import { Component, signal, isDevMode, PLATFORM_ID, inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component } from '@angular/core';
 import { RevealDirective } from '../../directives/reveal.directive';
 import { SceneHeroComponent } from './scenes/scene-hero/scene-hero.component';
 import { SceneLayerMorphComponent } from './scenes/scene-layer-morph/scene-layer-morph.component';
@@ -106,8 +105,6 @@ const SCENES: Scene[] = [
   },
 ];
 
-export type LayoutMode = 'A' | 'B' | 'C';
-
 @Component({
   selector: 'app-projetos',
   standalone: true,
@@ -116,36 +113,7 @@ export type LayoutMode = 'A' | 'B' | 'C';
   styleUrls: ['./projetos.component.scss'],
 })
 export class ProjetosComponent {
-  private platformId = inject(PLATFORM_ID);
-
-  readonly scenes = SCENES;
-  readonly isDev = isDevMode();
-
-  layoutMode = signal<LayoutMode>(this.getStoredLayout());
-
-  private getStoredLayout(): LayoutMode {
-    if (isPlatformBrowser(this.platformId)) {
-      return (localStorage.getItem('pj-layout') as LayoutMode) ?? 'A';
-    }
-    return 'A';
-  }
-
-  setLayout(mode: LayoutMode): void {
-    this.layoutMode.set(mode);
-    if (isPlatformBrowser(this.platformId)) {
-      localStorage.setItem('pj-layout', mode);
-    }
-  }
-
-  getHeroScene(): HeroScene | undefined {
-    return this.scenes.find((s): s is HeroScene => s.kind === 'hero');
-  }
-
-  getMorphScenes(): LayerMorphScene[] {
-    return this.scenes.filter((s): s is LayerMorphScene => s.kind === 'layer-morph');
-  }
-
-  getStripScene(): StripScene | undefined {
-    return this.scenes.find((s): s is StripScene => s.kind === 'strip');
-  }
+  readonly heroScene = SCENES.find((s): s is HeroScene => s.kind === 'hero');
+  readonly morphScenes = SCENES.filter((s): s is LayerMorphScene => s.kind === 'layer-morph');
+  readonly stripScene = SCENES.find((s): s is StripScene => s.kind === 'strip');
 }
