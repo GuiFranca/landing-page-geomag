@@ -25,13 +25,13 @@ describe('ProjetosComponent', () => {
   });
 
   it('openModal define activeModal', () => {
-    const c = { id: 'x', tag: 'T', title: 'T', thumb: 't.jpg', gallery: [] };
+    const c = { id: 'x', tag: 'T', title: 'T', thumb: 't.jpg', alt: 'A', gallery: [] };
     component.openModal(c);
     expect(component.activeModal()).toEqual(c);
   });
 
   it('closeModal limpa activeModal', () => {
-    const c = { id: 'x', tag: 'T', title: 'T', thumb: 't.jpg', gallery: [] };
+    const c = { id: 'x', tag: 'T', title: 'T', thumb: 't.jpg', alt: 'A', gallery: [] };
     component.openModal(c);
     component.closeModal();
     expect(component.activeModal()).toBeNull();
