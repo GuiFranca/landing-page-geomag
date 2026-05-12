@@ -1,0 +1,13 @@
+<div class="ss" role="region" aria-label="Exemplos de entregas">
+  <div class="container">
+    <div class="ss__grid">
+      @for (c of cases; track c.id) {
+        <div class="ss__card">
+          <div class="ss__thumb">
+            <img [src]="c.thumb" [alt]="c.alt" loading="lazy" />
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

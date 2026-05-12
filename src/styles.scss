@@ -527,3 +527,88 @@ a {
   outline: 2px solid var(--brand-400);
   outline-offset: 2px;
 }
+
+/* ============================================================
+   Projetos Reais — classes compartilhadas entre sub-componentes
+   ============================================================ */
+
+/* Moldura viewfinder (motif do hero) */
+.pj-frame {
+  position: relative;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  background: #eef3f7;
+  box-shadow: var(--shadow-card);
+}
+.pj-corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid rgba(74, 128, 164, 0.55);
+  z-index: 4;
+  pointer-events: none;
+  &.tl {
+    top: 10px;
+    left: 10px;
+    border-right: none;
+    border-bottom: none;
+  }
+  &.tr {
+    top: 10px;
+    right: 10px;
+    border-left: none;
+    border-bottom: none;
+  }
+  &.bl {
+    bottom: 10px;
+    left: 10px;
+    border-right: none;
+    border-top: none;
+  }
+  &.br {
+    bottom: 10px;
+    right: 10px;
+    border-left: none;
+    border-top: none;
+  }
+}
+
+/* Etiqueta de coordenada flutuante */
+.pj-meta {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(74, 128, 164, 0.28);
+  border-radius: var(--r-full);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--brand-500);
+  text-transform: uppercase;
+  z-index: 3;
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent-light);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+}
+.pj-meta--dark {
+  background: rgba(10, 26, 38, 0.78);
+  border-color: rgba(92, 184, 212, 0.35);
+  color: #cfe5f0;
+}
+
+/* Botão pequeno */
+.btn--sm {
+  padding: 9px 18px;
+  font-size: 13px;
+}

@@ -1,0 +1,76 @@
+.sh {
+  position: relative;
+  height: var(--pj-scene-height, 90vh);
+  overflow: hidden;
+  margin-bottom: var(--pj-scene-gap, 80px);
+
+  @media (max-width: 768px) {
+    height: var(--pj-scene-height-mobile, 70vh);
+    margin-bottom: var(--pj-scene-gap, 48px);
+  }
+
+  &__media {
+    position: absolute;
+    inset: 0;
+  }
+
+  &__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__poster {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: kenBurns 14s ease-in-out infinite alternate;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.68) 100%);
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    padding-top: 60px;
+  }
+
+  &__kicker {
+    margin-bottom: 14px;
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.4rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin: 0;
+  }
+}
+
+@keyframes kenBurns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}

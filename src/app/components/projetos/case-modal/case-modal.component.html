@@ -1,0 +1,75 @@
+<div
+  class="cm-backdrop"
+  role="dialog"
+  aria-modal="true"
+  tabindex="0"
+  [attr.aria-label]="case.title"
+  (click)="onBackdropClick($event)"
+  (keydown)="onBackdropKeydown($event)"
+>
+  <div class="cm-dialog">
+    <button class="cm-close" (click)="dismissed.emit()" aria-label="Fechar modal">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+      >
+        <path d="M18 6L6 18M6 6l12 12" />
+      </svg>
+    </button>
+
+    <div class="cm-viewer" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
+      <img
+        class="cm-img"
+        [src]="case.gallery[activeImg()].src"
+        [alt]="case.gallery[activeImg()].alt"
+      />
+      @if (case.gallery[activeImg()].caption) {
+        <p class="cm-caption">{{ case.gallery[activeImg()].caption }}</p>
+      }
+    </div>
+
+    @if (isSlider) {
+      <div class="cm-nav">
+        <button
+          class="cm-nav__btn"
+          (click)="prev()"
+          [disabled]="activeImg() === 0"
+          aria-label="Imagem anterior"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+        <span class="cm-nav__count">{{ activeImg() + 1 }} / {{ case.gallery.length }}</span>
+        <button
+          class="cm-nav__btn"
+          (click)="next()"
+          [disabled]="activeImg() === case.gallery.length - 1"
+          aria-label="Próxima imagem"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
+      </div>
+    }
+  </div>
+</div>

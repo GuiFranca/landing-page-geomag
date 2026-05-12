@@ -1,0 +1,30 @@
+<div class="sh">
+  <div class="sh__media">
+    @if (isMobile() || prefersReducedMotion) {
+      <div
+        class="sh__poster"
+        [style.background-image]="'url(' + video.poster + ')'"
+        role="img"
+        [attr.aria-label]="'Imagem do projeto — ' + kicker"
+      ></div>
+    } @else {
+      <video
+        #videoRef
+        class="sh__video"
+        autoplay
+        [muted]="true"
+        loop
+        playsinline
+        preload="metadata"
+        [poster]="video.poster"
+        aria-label="Vídeo de transição: farmland para DEM"
+      ></video>
+    }
+    <div class="sh__overlay" aria-hidden="true"></div>
+  </div>
+
+  <div class="sh__content container">
+    <p class="s-label sh__kicker">{{ kicker }}</p>
+    <h2 class="sh__title">{{ title }}</h2>
+  </div>
+</div>

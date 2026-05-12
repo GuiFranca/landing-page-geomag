@@ -1,0 +1,32 @@
+<section id="projetos" class="pj-section">
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <div class="container pj-section__inner">
+    <header class="pj-header" appReveal>
+      <div class="s-label">Projetos Reais</div>
+      <h2>Do <span class="grad-text">voo</span> à planta técnica.</h2>
+      <p>
+        Cada projeto começa com um voo RTK e termina como um produto entregável. Veja a
+        transformação técnica acontecer.
+      </p>
+    </header>
+  </div>
+
+  <div class="pj-mosaic">
+    @if (heroScene; as hero) {
+      <div class="pj-mosaic__hero-row">
+        <app-scene-hero [video]="hero.video" [title]="hero.title" [kicker]="hero.kicker" />
+      </div>
+    }
+
+    <div class="pj-mosaic__morph-row">
+      @for (m of morphScenes; track $index) {
+        <app-scene-layer-morph [layers]="m.layers" [embeddedVideo]="m.embeddedVideo" />
+      }
+    </div>
+
+    @if (stripScene; as strip) {
+      <app-scene-strip [cases]="strip.cases" />
+    }
+  </div>
+</section>

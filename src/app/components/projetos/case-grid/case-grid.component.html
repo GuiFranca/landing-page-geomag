@@ -1,0 +1,92 @@
+<div class="case-grid">
+  @for (c of cases; track c.title; let i = $index) {
+    <div
+      class="case-card"
+      [class.case-card--featured]="i === 0"
+      tabindex="0"
+      role="button"
+      (click)="openModal(c)"
+      (keydown)="openModalFromKeyboard($event, c)"
+    >
+      <img class="case-card__img" [src]="c.img" [alt]="c.title" />
+      <div class="case-card__fade"></div>
+      <div class="case-card__arrow">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M5 12h14M13 5l7 7-7 7" />
+        </svg>
+      </div>
+      <div class="case-card__body">
+        <span class="tag">{{ c.tag }}</span>
+        <h4>{{ c.title }}</h4>
+        <p>{{ c.meta }}</p>
+      </div>
+    </div>
+  }
+</div>
+
+<!-- Modal -->
+@if (modalCase()) {
+  <div
+    class="pj-modal"
+    [class.is-open]="!!modalCase()"
+    tabindex="0"
+    role="button"
+    aria-label="Fechar modal"
+    (click)="onBackdropClick($event)"
+    (keydown)="onBackdropKeydown($event)"
+  >
+    <div class="pj-modal__panel">
+      <div class="pj-modal__head">
+        <div>
+          <div class="s-label" style="margin-bottom: 6px">{{ modalCase()!.tag }}</div>
+          <h3>{{ modalCase()!.title }}</h3>
+        </div>
+        <button class="pj-modal__close" (click)="closeModal()" aria-label="Fechar">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+          >
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="pj-modal__body">
+        <p class="modal-desc">{{ modalCase()!.desc }}</p>
+        <div class="pj-modal__gallery">
+          @for (g of modalCase()!.gallery; track g.label) {
+            <div class="pj-frame pj-frame--gallery">
+              <span class="pj-corner tl"></span><span class="pj-corner tr"></span>
+              <span class="pj-corner bl"></span><span class="pj-corner br"></span>
+              <img [src]="g.src" [alt]="g.label" />
+              <span class="pj-meta" style="bottom: 14px; left: 14px">
+                <span class="dot"></span> {{ g.label }}
+              </span>
+            </div>
+          }
+        </div>
+        <div class="modal-specs">
+          @for (s of modalCase()!.specs; track s.label) {
+            <div class="modal-spec">
+              <div class="modal-spec__label">{{ s.label }}</div>
+              <div class="modal-spec__value">{{ s.value }}</div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+}

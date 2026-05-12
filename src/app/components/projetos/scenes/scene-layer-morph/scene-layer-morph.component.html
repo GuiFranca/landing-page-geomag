@@ -1,0 +1,67 @@
+<div class="slm" #containerRef (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
+  <div class="slm__media">
+    @for (layer of layers; track $index) {
+      <img
+        class="slm__layer"
+        [class.slm__layer--active]="activeIdx() === $index"
+        [src]="layer.src"
+        [alt]="layer.label"
+        loading="lazy"
+      />
+    }
+
+    @if (embeddedVideo) {
+      <div
+        class="slm__layer slm__layer--video"
+        [class.slm__layer--active]="activeIdx() === layers.length"
+      >
+        <video
+          class="slm__vid"
+          autoplay
+          [muted]="true"
+          loop
+          playsinline
+          [poster]="embeddedVideo.poster"
+          aria-label="Visualização 3D do modelo georreferenciado"
+        >
+          <source [src]="embeddedVideo.src" type="video/mp4" />
+        </video>
+      </div>
+    }
+
+    <div class="slm__overlay" aria-hidden="true"></div>
+  </div>
+
+  <div class="slm__panel container">
+    <p class="slm__layer-label s-label" aria-live="polite">
+      {{ activeIdx() < layers.length ? layers[activeIdx()].label : '3D' }}
+    </p>
+    <p class="slm__desc" aria-live="polite">
+      {{
+        activeIdx() < layers.length
+          ? layers[activeIdx()].desc
+          : 'Visualização 3D do modelo georreferenciado.'
+      }}
+    </p>
+    <div class="slm__dots" role="group" aria-label="Navegar entre camadas">
+      @for (layer of layers; track $index) {
+        <button
+          class="slm__dot"
+          [class.slm__dot--active]="activeIdx() === $index"
+          [attr.aria-pressed]="activeIdx() === $index"
+          [attr.aria-label]="'Ver camada ' + layer.label"
+          (click)="setActive($index)"
+        ></button>
+      }
+      @if (embeddedVideo) {
+        <button
+          class="slm__dot"
+          [class.slm__dot--active]="activeIdx() === layers.length"
+          [attr.aria-pressed]="activeIdx() === layers.length"
+          aria-label="Ver vídeo 3D"
+          (click)="setActive(layers.length)"
+        ></button>
+      }
+    </div>
+  </div>
+</div>
