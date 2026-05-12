@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RevealDirective } from '../../directives/reveal.directive';
 import { SceneHeroComponent } from './scenes/scene-hero/scene-hero.component';
 import { SceneLayerMorphComponent } from './scenes/scene-layer-morph/scene-layer-morph.component';
 import { SceneStripComponent } from './scenes/scene-strip/scene-strip.component';
-import { Scene, HeroScene, LayerMorphScene, StripScene } from './projetos.types';
+import { Scene, HeroScene, LayerMorphScene, StripScene, CaseCard } from './projetos.types';
 
 const IMG = (path: string) => `assets/images/projetos/${path}`;
 const VID = (path: string) => `assets/videos/projetos/${path}`;
@@ -85,21 +85,25 @@ const SCENES: Scene[] = [
         id: 'casa-branca',
         thumb: IMG('casa-branca-thumb.jpg'),
         alt: 'Pranchas técnicas georreferenciadas',
+        gallery: [],
       },
       {
         id: 'golinelli',
         thumb: IMG('golinelli-thumb.jpg'),
         alt: 'Prancha LEPAC — Parque Golinelli',
+        gallery: [],
       },
       {
         id: 'estrela-do-sul',
         thumb: IMG('estrela-do-sul-thumb.jpg'),
         alt: 'Projeto de loteamento',
+        gallery: [],
       },
       {
         id: 'terraplanagem',
         thumb: IMG('terraplanagem-01-thumb.jpg'),
         alt: 'Evolução de obra — terraplanagem',
+        gallery: [],
       },
     ],
   },
@@ -116,4 +120,14 @@ export class ProjetosComponent {
   readonly heroScene = SCENES.find((s): s is HeroScene => s.kind === 'hero');
   readonly morphScenes = SCENES.filter((s): s is LayerMorphScene => s.kind === 'layer-morph');
   readonly stripScene = SCENES.find((s): s is StripScene => s.kind === 'strip');
+
+  activeModal = signal<CaseCard | null>(null);
+
+  openModal(c: CaseCard) {
+    this.activeModal.set(c);
+  }
+
+  closeModal() {
+    this.activeModal.set(null);
+  }
 }

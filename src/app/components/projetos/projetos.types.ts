@@ -21,6 +21,9 @@ export interface CaseCard {
   id: string;
   thumb: string;
   alt: string;
+  tag?: string;
+  title?: string;
+  gallery: GalleryItem[];
 }
 
 export interface HeroScene {

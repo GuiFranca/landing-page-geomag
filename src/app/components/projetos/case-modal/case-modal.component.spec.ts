@@ -12,6 +12,7 @@ describe('CaseModalComponent', () => {
     tag: 'Test Tag',
     title: 'Test Case',
     thumb: 'thumb.jpg',
+    alt: 'Alt single',
     gallery: [{ src: 'img1.jpg', alt: 'Imagem 1' }],
   };
 
@@ -20,6 +21,7 @@ describe('CaseModalComponent', () => {
     tag: 'Multi Tag',
     title: 'Multi Case',
     thumb: 'thumb.jpg',
+    alt: 'Alt multi',
     gallery: [
       { src: 'img1.jpg', alt: 'Imagem 1' },
       { src: 'img2.jpg', alt: 'Imagem 2' },
