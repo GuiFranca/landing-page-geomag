@@ -1,6 +1,7 @@
 import { Component, HostListener, signal } from '@angular/core';
 
 import { environment } from '../../../environments/environment';
+import { trackWhatsAppClick } from '../../shared/analytics';
 
 @Component({
   selector: 'app-header',
@@ -38,5 +39,9 @@ export class HeaderComponent {
 
   closeMenu(): void {
     this.isMenuOpen.set(false);
+  }
+
+  onWhatsAppClick(): void {
+    trackWhatsAppClick('header');
   }
 }

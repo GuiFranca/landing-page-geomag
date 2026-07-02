@@ -31,7 +31,7 @@ export class ClientsComponent {
     { name: 'Longitude', logo: 'assets/images/clientes/longitude.png' },
     { name: 'Martiterra Urbanização', logo: 'assets/images/clientes/martiterra.png' },
     { name: 'Pet Food Solution', logo: 'assets/images/clientes/pet-food.png' },
-    { name: 'Prefeitura de Capivari', logo: 'assets/images/clientes/prefeitura-capivari.png' },
+    { name: 'Prefeitura de Capivari', logo: 'assets/images/clientes/prefeitura-capivari.webp' },
     { name: 'Projesan', logo: 'assets/images/clientes/projesan.png' },
     { name: 'São Carlos', logo: 'assets/images/clientes/sao-carlos.webp' },
     { name: 'Solve Brasil', logo: 'assets/images/clientes/solve.png' },

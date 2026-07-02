@@ -1,4 +1,13 @@
-import { Directive, ElementRef, Input, AfterViewInit, OnDestroy, inject } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  Input,
+  AfterViewInit,
+  OnDestroy,
+  inject,
+  PLATFORM_ID,
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
   selector: '[appReveal]',
@@ -8,9 +17,11 @@ export class RevealDirective implements AfterViewInit, OnDestroy {
   @Input() revealDelay = 0;
 
   private el = inject<ElementRef<HTMLElement>>(ElementRef);
+  private platformId = inject(PLATFORM_ID);
   private observer?: IntersectionObserver;
 
   ngAfterViewInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (prefersReducedMotion) {

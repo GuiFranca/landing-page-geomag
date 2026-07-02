@@ -7,12 +7,14 @@
   <app-tech-panel></app-tech-panel>
   <app-projetos></app-projetos>
   <app-clients></app-clients>
+  <app-faq></app-faq>
   <app-cta></app-cta>
 </main>
 
 <!-- WhatsApp Float Button -->
 <a
   [href]="whatsappFloatUrl"
+  (click)="onWhatsAppClick()"
   target="_blank"
   rel="noopener noreferrer"
   class="whatsapp-float"
