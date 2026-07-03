@@ -3,7 +3,6 @@ import { HeroComponent } from '../hero/hero.component';
 import { ServicesComponent } from '../services/services.component';
 import { ClientsComponent } from '../clients/clients.component';
 import { TechPanelComponent } from '../tech-panel/tech-panel.component';
-import { FaqComponent } from '../faq/faq.component';
 import { CtaComponent } from '../cta/cta.component';
 import { ProjetosComponent } from '../projetos/projetos.component';
 import { environment } from '../../../environments/environment';
@@ -20,7 +19,6 @@ import { trackWhatsAppClick } from '../../shared/analytics';
     ClientsComponent,
     TechPanelComponent,
     CtaComponent,
-    FaqComponent,
     ProjetosComponent,
   ],
 })
