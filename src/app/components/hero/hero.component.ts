@@ -1,6 +1,16 @@
-import { Component, AfterViewInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  AfterViewInit,
+  OnDestroy,
+  ElementRef,
+  ViewChild,
+  inject,
+  PLATFORM_ID,
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 import { environment } from '../../../environments/environment';
+import { trackWhatsAppClick } from '../../shared/analytics';
 
 @Component({
   selector: 'app-hero',
@@ -34,7 +44,10 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
     this.seed = 42;
   }
 
+  private platformId = inject(PLATFORM_ID);
+
   ngAfterViewInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     this.drawCanvases();
     this.resizeHandler = () => {
@@ -98,5 +111,9 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
       }
       ctx.stroke();
     }
+  }
+
+  onWhatsAppClick(): void {
+    trackWhatsAppClick('hero');
   }
 }

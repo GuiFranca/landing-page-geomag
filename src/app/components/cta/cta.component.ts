@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RevealDirective } from '../../directives/reveal.directive';
 import { environment } from '../../../environments/environment';
+import { trackWhatsAppClick, trackEmailClick } from '../../shared/analytics';
 
 @Component({
   selector: 'app-cta',
@@ -12,4 +13,12 @@ import { environment } from '../../../environments/environment';
 export class CtaComponent {
   whatsappUrl = `https://wa.me/${environment.whatsappNumber}?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20GeoMAG.`;
   emailUrl = 'mailto:cesar@geomag.live';
+
+  onWhatsAppClick(): void {
+    trackWhatsAppClick('cta_final');
+  }
+
+  onEmailClick(): void {
+    trackEmailClick('cta_final');
+  }
 }

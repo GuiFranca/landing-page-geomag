@@ -22,17 +22,17 @@ const SCENES: Scene[] = [
     kind: 'layer-morph',
     layers: [
       {
-        src: IMG('mato-dentro-orto.png'),
+        src: IMG('mato-dentro-orto.webp'),
         label: 'Ortofoto',
         desc: 'Imagem georreferenciada de alta resolução gerada por drone RTK. Precisão horizontal de ±2 cm.',
       },
       {
-        src: IMG('mato-dentro-dem.png'),
+        src: IMG('mato-dentro-dem.webp'),
         label: 'DEM',
         desc: 'Superfície 3D colorizada por altitude. Permite análise de relevo, bacias e volumetria.',
       },
       {
-        src: IMG('mato-dentro-cad.png'),
+        src: IMG('mato-dentro-cad.webp'),
         label: 'CAD',
         desc: 'Planta CAD com curvas de nível, elementos vetorizados e pontos notáveis prontos para projeto.',
       },
@@ -42,17 +42,17 @@ const SCENES: Scene[] = [
     kind: 'layer-morph',
     layers: [
       {
-        src: IMG('paroquia-orto.png'),
+        src: IMG('paroquia-orto.webp'),
         label: 'Ortofoto',
         desc: 'Levantamento aerofotogramétrico de área urbana com georreferenciamento em SIRGAS 2000.',
       },
       {
-        src: IMG('paroquia-orto-cad.png'),
+        src: IMG('paroquia-orto-cad.webp'),
         label: 'Orto + CAD',
         desc: 'Sobreposição da vetorização técnica sobre a ortofoto para validação em campo.',
       },
       {
-        src: IMG('paroquia-cad.png'),
+        src: IMG('paroquia-cad.webp'),
         label: 'CAD Final',
         desc: 'Planta CAD com edificações, calçadas, vegetação e divisas — entregue em DWG + PDF.',
       },

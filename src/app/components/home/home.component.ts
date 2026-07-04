@@ -6,6 +6,7 @@ import { TechPanelComponent } from '../tech-panel/tech-panel.component';
 import { CtaComponent } from '../cta/cta.component';
 import { ProjetosComponent } from '../projetos/projetos.component';
 import { environment } from '../../../environments/environment';
+import { trackWhatsAppClick } from '../../shared/analytics';
 
 @Component({
   selector: 'app-home',
@@ -23,4 +24,8 @@ import { environment } from '../../../environments/environment';
 })
 export class HomeComponent {
   whatsappFloatUrl = `https://wa.me/${environment.whatsappNumber}?text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20com%20topografia.`;
+
+  onWhatsAppClick(): void {
+    trackWhatsAppClick('float');
+  }
 }

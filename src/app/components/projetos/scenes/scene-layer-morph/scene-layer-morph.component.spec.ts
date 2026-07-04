@@ -1,13 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PLATFORM_ID } from '@angular/core';
 import { SceneLayerMorphComponent } from './scene-layer-morph.component';
-import { ProjectMeta, Layer } from '../../projetos.types';
+import { Layer } from '../../projetos.types';
 
 describe('SceneLayerMorphComponent', () => {
   let fixture: ComponentFixture<SceneLayerMorphComponent>;
   let component: SceneLayerMorphComponent;
 
-  const testProject: ProjectMeta = { tag: 'Test', title: 'Test Project', specs: [] };
   const testLayers: Layer[] = [
     { src: 'a.png', label: 'Orto', desc: 'Descricao A' },
     { src: 'b.png', label: 'DEM', desc: 'Descricao B' },
@@ -22,7 +21,6 @@ describe('SceneLayerMorphComponent', () => {
 
     fixture = TestBed.createComponent(SceneLayerMorphComponent);
     component = fixture.componentInstance;
-    component.project = testProject;
     component.layers = testLayers;
     fixture.detectChanges();
   });
