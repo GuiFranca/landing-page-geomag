@@ -12,27 +12,28 @@
 
     <div class="clients-marquee" appReveal [revealDelay]="0.2">
       <div class="clients-track">
-        @for (c of clients; track c) {
-          <img
-            [src]="c.logo"
-            [alt]="c.name"
-            class="clients-logo"
-            loading="lazy"
-            (mouseenter)="showTooltip($event, c.name)"
-            (mouseleave)="hideTooltip()"
-          />
-        }
-        @for (c of clients; track c) {
-          <img
-            [src]="c.logo"
-            [alt]="c.name"
-            class="clients-logo"
-            loading="lazy"
-            aria-hidden="true"
-            (mouseenter)="showTooltip($event, c.name)"
-            (mouseleave)="hideTooltip()"
-          />
-        }
+        <div class="clients-group">
+          @for (c of clients; track c) {
+            <img
+              [src]="c.logo"
+              [alt]="c.name"
+              class="clients-logo"
+              (mouseenter)="showTooltip($event, c.name)"
+              (mouseleave)="hideTooltip()"
+            />
+          }
+        </div>
+        <div class="clients-group" aria-hidden="true">
+          @for (c of clients; track c) {
+            <img
+              [src]="c.logo"
+              [alt]="c.name"
+              class="clients-logo"
+              (mouseenter)="showTooltip($event, c.name)"
+              (mouseleave)="hideTooltip()"
+            />
+          }
+        </div>
       </div>
     </div>
 
