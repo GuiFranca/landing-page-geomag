@@ -46,14 +46,22 @@
 
 .clients-track {
   display: flex;
-  align-items: center;
-  gap: var(--sp-16);
   width: max-content;
   animation: marquee 45s linear infinite;
+  will-change: transform;
 
   &:hover {
     animation-play-state: paused;
   }
+}
+
+// padding-right igual ao gap: cada grupo ocupa exatamente 50% do track,
+// entao translateX(-50%) alinha pixel-perfect com o inicio do segundo grupo
+.clients-group {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-16);
+  padding-right: var(--sp-16);
 }
 
 .clients-logo {
@@ -109,8 +117,9 @@
 }
 
 @media (max-width: 1024px) {
-  .clients-track {
+  .clients-group {
     gap: var(--sp-12);
+    padding-right: var(--sp-12);
   }
 
   .clients-logo {
@@ -121,8 +130,12 @@
 
 @media (max-width: 640px) {
   .clients-track {
-    gap: var(--sp-10);
     animation-duration: 55s;
+  }
+
+  .clients-group {
+    gap: var(--sp-10);
+    padding-right: var(--sp-10);
   }
 
   .clients-logo {
@@ -135,9 +148,17 @@
 @media (prefers-reduced-motion: reduce) {
   .clients-track {
     animation: none;
+    width: auto;
+  }
+
+  .clients-group {
     flex-wrap: wrap;
     justify-content: center;
-    width: auto;
+    padding-right: 0;
+
+    &[aria-hidden='true'] {
+      display: none;
+    }
   }
 
   .clients-marquee {
