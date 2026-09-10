@@ -32,11 +32,21 @@ function Convert-Asset {
 
 Write-Host "`n== Logos de clientes (360x144, 2x da caixa real 180x72 / 150x56) ==" -ForegroundColor Cyan
 $clientes = Join-Path $root 'src/assets/images/clientes'
+# Um .webp gerado por esta mesma rotina fica no mesmo diretorio que o
+# original (nao apagamos o .png/.jpg). Para nao reprocessar a propria saida
+# como se fosse fonte, agrupamos por nome base e so tratamos o .webp como
+# fonte quando NAO existe .png/.jpg/.jpeg irmao (caso dos 3 logos que ja
+# nascem em .webp: prefeitura-capivari, sao-carlos, zorzi).
 Get-ChildItem -Path $clientes -File |
     Where-Object { $_.Extension -in '.png', '.jpg', '.jpeg', '.webp' } |
+    Group-Object BaseName |
     ForEach-Object {
-        $dest = Join-Path $clientes ($_.BaseName + '.webp')
-        Convert-Asset -Source $_.FullName -Destination $dest -MaxWidth 360 -MaxHeight 144 -Quality 86
+        $baseName = $_.Name
+        $files = $_.Group
+        $source = $files | Where-Object { $_.Extension -ne '.webp' } | Select-Object -First 1
+        if (-not $source) { $source = $files | Select-Object -First 1 }
+        $dest = Join-Path $clientes ($baseName + '.webp')
+        Convert-Asset -Source $source.FullName -Destination $dest -MaxWidth 360 -MaxHeight 144 -Quality 86
     }
 
 Write-Host "`n== Logo do header (392px, 2x dos 196px exibidos) ==" -ForegroundColor Cyan
