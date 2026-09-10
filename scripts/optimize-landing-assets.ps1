@@ -13,14 +13,16 @@ function Convert-Asset {
         [string]$Source,
         [string]$Destination,
         [int]$MaxWidth,
+        [int]$MaxHeight = 0,
         [int]$Quality
     )
     if (-not (Test-Path $Source)) {
         Write-Warning "ausente: $Source"
         return
     }
+    $geometry = if ($MaxHeight -gt 0) { "$($MaxWidth)x$($MaxHeight)>" } else { "$($MaxWidth)x>" }
     $before = (Get-Item $Source).Length
-    & magick $Source -resize "$($MaxWidth)x>" -quality $Quality -define webp:method=6 $Destination
+    & magick $Source -resize $geometry -quality $Quality -define webp:method=6 $Destination
     if ($LASTEXITCODE -ne 0) { throw "magick falhou em $Source" }
     $after = (Get-Item $Destination).Length
     $pct = [math]::Round((1 - $after / $before) * 100)
@@ -28,13 +30,13 @@ function Convert-Asset {
     '{0,-34} {1,8:N1} KB -> {2,7:N1} KB  -{3}%' -f $name, ($before / 1KB), ($after / 1KB), $pct | Write-Host
 }
 
-Write-Host "`n== Logos de clientes (260px, 2x dos ~130px exibidos) ==" -ForegroundColor Cyan
+Write-Host "`n== Logos de clientes (360x144, 2x da caixa real 180x72 / 150x56) ==" -ForegroundColor Cyan
 $clientes = Join-Path $root 'src/assets/images/clientes'
 Get-ChildItem -Path $clientes -File |
     Where-Object { $_.Extension -in '.png', '.jpg', '.jpeg', '.webp' } |
     ForEach-Object {
         $dest = Join-Path $clientes ($_.BaseName + '.webp')
-        Convert-Asset -Source $_.FullName -Destination $dest -MaxWidth 260 -Quality 86
+        Convert-Asset -Source $_.FullName -Destination $dest -MaxWidth 360 -MaxHeight 144 -Quality 86
     }
 
 Write-Host "`n== Logo do header (392px, 2x dos 196px exibidos) ==" -ForegroundColor Cyan
