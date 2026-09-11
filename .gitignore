@@ -43,3 +43,6 @@ Thumbs.db
 
 # Superpowers (specs e planos gerados pelo Claude — apenas uso local)
 docs/superpowers/
+
+# SDD workspace (scratch de execucao de planos)
+.superpowers/
