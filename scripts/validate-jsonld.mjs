@@ -10,13 +10,36 @@ import { dirname, join } from 'node:path';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const TARGET = join(ROOT, 'src', 'index.html');
-const BLOCK_RE = /<script\s+type="application\/ld\+json"\s*>([\s\S]*?)<\/script>/g;
+
+/**
+ * OPEN_TAG_RE conta quantas tags ld+json existem de fato, tolerando atributos
+ * extras (id, nonce, data-*) em qualquer ordem e espacamento arbitrario.
+ * BLOCK_RE extrai o conteudo de cada uma. As duas contagens TEM que bater:
+ * se BLOCK_RE deixar um bloco de fora, o guard nao valida esse bloco e passa
+ * vazio — exatamente o defeito que esta checagem existe para impedir.
+ */
+const LD_TYPE = 'type\\s*=\\s*["\']application/ld\\+json["\']';
+const OPEN_TAG_RE = new RegExp(`<script\\b[^>]*?\\s${LD_TYPE}[^>]*>`, 'gi');
+const BLOCK_RE = new RegExp(
+  `<script\\b[^>]*?\\s${LD_TYPE}[^>]*>([\\s\\S]*?)</script\\s*>`,
+  'gi',
+);
 
 const html = readFileSync(TARGET, 'utf8');
 const blocks = [...html.matchAll(BLOCK_RE)];
+const occurrences = [...html.matchAll(OPEN_TAG_RE)];
 
-if (blocks.length === 0) {
+if (occurrences.length === 0) {
   console.error('FALHA: nenhum bloco application/ld+json encontrado em src/index.html');
+  process.exit(1);
+}
+
+if (blocks.length !== occurrences.length) {
+  console.error(
+    `FALHA: ${occurrences.length} tag(s) application/ld+json presentes em src/index.html, ` +
+      `mas so ${blocks.length} bloco(s) puderam ser extraidos para validacao.`,
+  );
+  console.error('Provavel causa: tag sem </script> de fechamento ou aninhamento inesperado.');
   process.exit(1);
 }
 
