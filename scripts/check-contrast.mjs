@@ -21,6 +21,8 @@ const CHECKS = [
   { label: '.s-label', fg: '--brand-500', bg: '--color-bg-base', where: 'eyebrow em secao clara' },
   { label: '.s-label', fg: '--brand-500', bg: '--color-bg-elevated', where: 'eyebrow sobre card' },
   { label: '.skip-link', fg: '#ffffff', bg: '#277894', where: 'skip link em foco' },
+  { label: '.footer__cert', fg: '--color-text-muted', bg: '#ffffff', where: 'footer certificacao' },
+  { label: '.footer__tagline', fg: '--brand-500', bg: '#ffffff', where: 'footer tagline' },
 ];
 
 const css = readFileSync(join(ROOT, 'src', 'styles.scss'), 'utf8');
