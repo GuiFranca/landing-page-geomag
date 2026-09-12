@@ -79,4 +79,40 @@ describe('SceneLayerMorphComponent', () => {
     component.onTouchEnd({ changedTouches: [{ clientX: 100 }] } as unknown as TouchEvent);
     expect(component.activeIdx()).toBe(2);
   });
+
+  describe('autoplay do video incorporado', () => {
+    let video: HTMLVideoElement;
+
+    beforeEach(() => {
+      // Fixture propria: embeddedVideo precisa estar definido ANTES do primeiro
+      // detectChanges, senao o @if do template muda depois de checado (NG0100).
+      const f = TestBed.createComponent(SceneLayerMorphComponent);
+      f.componentInstance.layers = testLayers;
+      f.componentInstance.embeddedVideo = { src: 'v.mp4', poster: 'p.webp' };
+      f.detectChanges();
+      const el = f.nativeElement.querySelector('video.slm__vid');
+      expect(el).withContext('o <video> do embeddedVideo deveria existir').toBeTruthy();
+      video = el as HTMLVideoElement;
+    });
+
+    // Guard de regressao. O <source> deste video sai no HTML pre-renderizado, entao o
+    // Chrome decide sobre o autoplay ja no primeiro parse, antes de a hidratacao setar a
+    // propriedade `muted`. Sem o ATRIBUTO `muted` no markup ele trata o video como tendo
+    // som, bloqueia o autoplay e nao tenta de novo. Property binding sozinho nao basta.
+    it('declara o atributo muted no markup, nao so a propriedade', () => {
+      expect(video.hasAttribute('muted'))
+        .withContext('sem o atributo `muted` o Chrome bloqueia o autoplay no SSR')
+        .toBe(true);
+    });
+
+    it('mantem a propriedade muted verdadeira', () => {
+      expect(video.muted).toBe(true);
+    });
+
+    it('declara autoplay, loop e playsinline', () => {
+      expect(video.hasAttribute('autoplay')).toBe(true);
+      expect(video.hasAttribute('loop')).toBe(true);
+      expect(video.hasAttribute('playsinline')).toBe(true);
+    });
+  });
 });

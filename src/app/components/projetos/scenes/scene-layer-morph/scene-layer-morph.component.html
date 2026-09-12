@@ -15,9 +15,19 @@
         class="slm__layer slm__layer--video"
         [class.slm__layer--active]="activeIdx() === layers.length"
       >
+        <!--
+          O atributo `muted` estatico precisa existir ALEM do [muted]="true".
+          O binding so seta a propriedade DOM na hidratacao e nao aparece no HTML
+          pre-renderizado. Como o <source> deste video ja vem no HTML do servidor, o
+          Chrome avalia o autoplay logo no primeiro parse: sem o atributo `muted` ele
+          trata como video com som, bloqueia o autoplay e nao tenta de novo depois.
+          O hero nao sofre disso porque recebe o src via IntersectionObserver, ja
+          depois da hidratacao. Ver c19c427 para o motivo do binding.
+        -->
         <video
           class="slm__vid"
           autoplay
+          muted
           [muted]="true"
           loop
           playsinline

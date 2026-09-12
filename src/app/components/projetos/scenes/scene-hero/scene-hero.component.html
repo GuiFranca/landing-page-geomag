@@ -8,10 +8,14 @@
         [attr.aria-label]="'Imagem do projeto — ' + kicker"
       ></div>
     } @else {
+      <!-- `muted` estatico alem do binding: ver o comentario em scene-layer-morph. Aqui o
+           src so chega depois da hidratacao, entao o autoplay ja funcionava sem ele; o
+           atributo remove a dependencia desse detalhe de ordem. -->
       <video
         #videoRef
         class="sh__video"
         autoplay
+        muted
         [muted]="true"
         loop
         playsinline
