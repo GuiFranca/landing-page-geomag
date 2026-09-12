@@ -32,8 +32,8 @@
 
   --color-text-primary: #0e2232;
   --color-text-secondary: #3a5568;
-  --color-text-muted: #6b8899;
-  --color-text-light: #94aab8;
+  /* AA (4.5:1) sobre o stop mais escuro de --gradient-hero-bg (#dceaf3): 4.67:1 */
+  --color-text-muted: #4f6a78;
   --color-text-inverse: #f5f8fa;
 
   --color-border: rgba(74, 128, 164, 0.14);
@@ -323,7 +323,7 @@ a {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--brand-400);
+  color: var(--brand-500);
   margin-bottom: var(--sp-4);
 }
 .s-label::before {

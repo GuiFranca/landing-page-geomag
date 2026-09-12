@@ -11,6 +11,9 @@
     "lint": "ng lint",
     "format": "prettier --write \"src/**/*.{ts,html,scss}\"",
     "format:check": "prettier --check \"src/**/*.{ts,html,scss}\"",
+    "validate:jsonld": "node scripts/validate-jsonld.mjs",
+    "check:contrast": "node scripts/check-contrast.mjs",
+    "verify": "npm run lint && npm run validate:jsonld && npm run check:contrast && npm run test:ci",
     "prepare": "husky"
   },
   "private": true,
