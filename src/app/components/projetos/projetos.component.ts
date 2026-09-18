@@ -15,7 +15,7 @@ const SCENES: Scene[] = [
     title: 'O terreno em alta resolução.',
     video: {
       src: VID('beira-rio-transition.mp4'),
-      poster: VID('beira-rio-transition-poster.jpg'),
+      poster: VID('beira-rio-transition-poster.webp'),
     },
   },
   {
@@ -59,7 +59,7 @@ const SCENES: Scene[] = [
     ],
     embeddedVideo: {
       src: VID('paroquia-3d.mp4'),
-      poster: VID('paroquia-3d-poster.jpg'),
+      poster: VID('paroquia-3d-poster.webp'),
       durationSec: 8,
     },
   },
